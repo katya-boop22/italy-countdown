@@ -25,29 +25,13 @@ body {
   animation: float 4s ease-in-out infinite;
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-  position: absolute;
-  bottom: 40px;
-  font-size: 55px;
-  letter-spacing: 12px;
-}
-
 .scene::after {
   content: "☀️";
   position: absolute;
   top: 40px;
   right: 40px;
   font-size: 45px;
+  animation: glow 3s ease-in-out infinite;
 }
 
 .card {
@@ -81,4 +65,31 @@ h1 {
 .quote {
   font-style: italic;
   color: #666;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
 }
