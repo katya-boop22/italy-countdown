@@ -8,6 +8,7 @@ body {
 .scene {
   position: relative;
   height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,41 +17,33 @@ body {
   background: linear-gradient(
     to bottom,
     #f7c99c 0%,
-    #ffd9c0 30%,
-    #8fc9df 60%,
+    #ffd9c0 35%,
+    #8fc9df 65%,
     #176d98 100%
   );
 }
 
-/* Stars layer */
 .stars {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-    white 2px,
-    transparent 2px
-  );
-  background-size: 90px 90px;
-  opacity: 0.25;
+  opacity: 0.35;
 }
 
-/* Amalfi cliffs */
 .scene::before {
   content: "⛰️ 🌿";
   position: absolute;
-  bottom: 85px;
-  left: 15px;
-  font-size: 75px;
+  bottom: 70px;
+  left: 10px;
+  font-size: 55px;
 }
 
-/* Floating Italy symbols */
 .scene::after {
   content: "🍋 🌸 🌊";
   position: absolute;
-  bottom: 35px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 52px;
+  font-size: 40px;
   white-space: nowrap;
   animation: float 4s ease-in-out infinite;
 }
@@ -59,112 +52,72 @@ body {
   position: relative;
   z-index: 2;
 
-  width: 320px;
-  padding: 35px;
+  width: calc(100% - 50px);
+  max-width: 330px;
 
-  background: rgba(255,248,235,0.95);
+  max-height: 80vh;
+  overflow: hidden;
 
-  border-radius: 30px;
+  padding: 25px;
+
+  background: rgba(255,248,235,0.96);
+
+  border-radius: 25px;
 
   text-align: center;
 
-  box-shadow:
-    0 20px 50px rgba(0,0,0,0.25);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
 h1 {
-  margin-top: 0;
+  margin: 0;
+  font-size: 32px;
   color: #8b5a2b;
-  font-size: 40px;
 }
 
 .subtitle {
+  font-size: 18px;
   color: #9a6b3f;
-  font-size: 21px;
 }
 
 #countdown {
-  margin: 25px 0;
-  padding: 18px;
+  margin: 15px 0;
+  padding: 12px;
 
-  background: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.5);
+  border-radius: 15px;
 
-  border-radius: 20px;
-
+  font-size: 21px;
   color: #5b4636;
-
-  font-size: 26px;
-  font-weight: bold;
-
-  line-height: 1.5;
 }
 
 .italy-time {
-  padding: 12px;
-
-  border-radius: 15px;
-
-  background: rgba(255,255,255,0.35);
-
-  color: #8b5a2b;
+  font-size: 14px;
 }
 
 #italyClock {
   font-weight: bold;
-  color: #5b4636;
 }
 
 .quote {
-  color: #75604d;
-  font-style: italic;
-}
-
-.trip {
-  margin-top: 20px;
-  padding-top: 18px;
-
-  border-top: 1px solid rgba(139,90,43,0.25);
-
-  color: #5b4636;
-
-  line-height: 1.5;
-}
-
-.location {
-  color: #9a6b3f;
-  font-size: 15px;
-}
-
-.adventure {
-  margin-top: 20px;
-  padding-top: 15px;
-
-  border-top: 1px solid rgba(139,90,43,0.25);
-}
-
-.adventure h2 {
-  color: #8b5a2b;
-  font-size: 20px;
-}
-
-.adventure p {
-  color: #75604d;
-  font-style: italic;
   font-size: 14px;
 }
 
+.trip,
+.location {
+  font-size: 14px;
+}
+
+.adventure h2 {
+  font-size: 17px;
+}
+
+.adventure p {
+  font-size: 13px;
+}
+
 @keyframes float {
-
-  0% {
-    transform: translateX(-50%) translateY(0);
-  }
-
   50% {
-    transform: translateX(-50%) translateY(-12px);
+    transform: translateX(-50%) translateY(-10px);
   }
-
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-
 }
