@@ -1,9 +1,11 @@
 const scene = document.getElementById("scene");
 
 const skyDetails = document.createElement("div");
+
 skyDetails.className = "sky-details";
 
 scene.appendChild(skyDetails);
+
 
 
 function updateSkyDetails() {
@@ -20,33 +22,46 @@ function updateSkyDetails() {
     );
 
 
+
     if (hour >= 6 && hour < 12) {
 
-        skyDetails.innerHTML = "☀️ 🌿 Morning light over Italy";
+        skyDetails.innerHTML =
+        "☀️ Morning light over the Amalfi Coast";
 
     }
+
 
     else if (hour >= 12 && hour < 18) {
 
-        skyDetails.innerHTML = "🍋 🌊 Sunny Amalfi Coast";
+        skyDetails.innerHTML =
+        "🍋 Sunny Italian afternoon";
 
     }
+
 
     else if (hour >= 18 && hour < 21) {
 
-        skyDetails.innerHTML = "🌅 Golden sunset in Italy";
+        skyDetails.innerHTML =
+        "🌅 Golden hour in Italy";
 
     }
 
+
     else {
 
-        skyDetails.innerHTML = "🌙 ✨ Stars above the Mediterranean";
+        skyDetails.innerHTML =
+        "🌙 ✨ Stars above the Mediterranean";
 
     }
 
 }
 
 
+
 updateSkyDetails();
 
-setInterval(updateSkyDetails, 60000);
+
+setInterval(
+    updateSkyDetails,
+    60000
+);
