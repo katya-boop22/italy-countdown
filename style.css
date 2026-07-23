@@ -8,100 +8,87 @@ body {
 .scene {
   position: relative;
   height: 100vh;
-  background:
-    linear-gradient(
-      to bottom,
-      #f6c89b 0%,
-      #ffd8b8 28%,
-      #8fc9dd 58%,
-      #176d98 100%
-    );
+  background: linear-gradient(
+    to bottom,
+    #f8cfa8,
+    #f6d9c2,
+    #86bfd6,
+    #176d98
+  );
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-/* Amalfi cliffs */
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    white 2px,
+    transparent 2px
+  );
+  background-size: 80px 80px;
+  opacity: 0.35;
+}
+
 .scene::before {
   content: "⛰️ 🌿";
   position: absolute;
-  bottom: 90px;
-  left: 15px;
-  font-size: 75px;
-  opacity: 0.85;
+  bottom: 80px;
+  left: 20px;
+  font-size: 70px;
 }
 
-/* Floating Italy details */
 .scene::after {
   content: "🍋 🌸 🌊";
   position: absolute;
   bottom: 35px;
   left: 50%;
   transform: translateX(-50%);
-  white-space: nowrap;
   font-size: 50px;
-  letter-spacing: 5px;
-  animation: float 4s ease-in-out infinite;
+  white-space: nowrap;
+  animation: float 4s infinite ease-in-out;
 }
 
-/* Card */
 .card {
   position: relative;
-  background: rgba(255,248,235,0.94);
+  z-index: 5;
+  width: 320px;
   padding: 35px;
+  background: rgba(255,248,235,0.95);
   border-radius: 30px;
   text-align: center;
-  max-width: 340px;
-  border: 1px solid rgba(139,90,43,0.25);
-  box-shadow:
-    0 15px 40px rgba(0,0,0,0.2);
-  z-index: 2;
-}
-
-/* Sun */
-.card::before {
-  content: "☀️";
-  position: fixed;
-  top: 35px;
-  right: 35px;
-  font-size: 55px;
-  animation: glow 3s ease-in-out infinite;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
 }
 
 h1 {
-  font-size: 40px;
   color: #8b5a2b;
-  margin: 0 0 10px;
+  font-size: 40px;
+  margin-top: 0;
 }
 
 .subtitle {
-  font-size: 20px;
   color: #9a6b3f;
+  font-size: 20px;
 }
 
 #countdown {
-  margin: 25px 0;
+  background: rgba(255,255,255,0.5);
   padding: 15px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.5);
+  margin: 20px 0;
   font-size: 25px;
   font-weight: bold;
   color: #5b4636;
-  line-height: 1.5;
 }
 
 .italy-time {
-  margin: 15px 0;
-  padding: 12px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.35);
   color: #8b5a2b;
 }
 
 #italyClock {
   font-weight: bold;
-  font-size: 18px;
 }
 
 .quote {
@@ -109,83 +96,29 @@ h1 {
   color: #75604d;
 }
 
-.trip {
-  border-top: 1px solid rgba(139,90,43,0.2);
-  padding-top: 15px;
-  color: #5b4636;
-  line-height: 1.5;
-}
-
+.trip,
 .location {
-  color: #9a6b3f;
-  font-size: 15px;
+  color: #5b4636;
 }
 
-/* Jipka & Zlo adventure */
 .adventure {
+  border-top: 1px solid rgba(139,90,43,0.25);
   margin-top: 20px;
   padding-top: 15px;
-  border-top: 1px solid rgba(139,90,43,0.2);
 }
 
 .adventure h2 {
-  font-size: 19px;
   color: #8b5a2b;
+  font-size: 20px;
 }
 
 .adventure p {
-  font-size: 14px;
-  font-style: italic;
   color: #75604d;
+  font-style: italic;
 }
 
-/* Animations */
 @keyframes float {
-  0% {
-    transform: translateX(-50%) translateY(0);
-  }
-
   50% {
-    transform: translateX(-50%) translateY(-12px);
+    transform: translateX(-50%) translateY(-15px);
   }
-
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-@keyframes glow {
-  0% {
-    opacity: .7;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-
-  100% {
-    opacity: .7;
-    transform: scale(1);
-  }
-}
-
-/* Night mode */
-.scene.night {
-  background:
-    linear-gradient(
-      to bottom,
-      #182848,
-      #243b55,
-      #0b3d5c
-    );
-}
-
-.scene.night::after {
-  content: "🍋 🌸 🌙";
-}
-
-.scene.night .card::before {
-  content: "🌙";
 }
