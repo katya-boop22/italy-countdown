@@ -45,7 +45,8 @@ h1 {
 .quote {
   font-style: italic;
   color: #666;
-.scene::before {
+{
+  .scene::before 
   content: "🍋 🌸 🌊";
   position: absolute;
   bottom: 40px;
