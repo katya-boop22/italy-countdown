@@ -7,35 +7,42 @@ body {
 
 .scene {
   height: 100vh;
-  background: linear-gradient(#f7cfa8, #5d8ca8);
+  background:
+    linear-gradient(rgba(255,220,170,0.25), rgba(50,120,150,0.45)),
+    linear-gradient(#f6c98b, #4f89a6);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .card {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.88);
   padding: 35px;
   border-radius: 25px;
   text-align: center;
   max-width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 h1 {
   font-size: 38px;
   color: #8b5a2b;
+  margin-bottom: 10px;
 }
 
 .subtitle {
   font-size: 20px;
+  color: #555;
 }
 
 #countdown {
   font-size: 28px;
   margin: 25px 0;
   color: #333;
+  line-height: 1.4;
 }
 
 .quote {
   font-style: italic;
+  color: #666;
 }
