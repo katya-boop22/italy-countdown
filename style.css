@@ -1,22 +1,30 @@
-/* =========================================================
+from pathlib import Path
+
+css = r'''/* =========================================================
    LA DOLCE ATTESA
-   Complete style.css
+   Complete style.css — Mobile Luxury Layout
    ========================================================= */
 
 
 /* ---------- Basic reset ---------- */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
+  width: 100%;
   min-height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  width: 100%;
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -26,6 +34,19 @@ body {
   font-family: "Poppins", Arial, sans-serif;
 
   background-color: #23475a;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
 
@@ -43,79 +64,152 @@ body {
   align-items: center;
   justify-content: center;
 
-  padding: 55px 22px 70px;
+  padding:
+    max(68px, env(safe-area-inset-top))
+    clamp(14px, 3vw, 30px)
+    max(58px, env(safe-area-inset-bottom));
+
+  overflow: hidden;
 
   background-image:
     linear-gradient(
       180deg,
-      rgba(15, 37, 48, 0.18) 0%,
-      rgba(23, 43, 48, 0.24) 45%,
-      rgba(20, 28, 29, 0.50) 100%
+      rgba(11, 30, 40, 0.10) 0%,
+      rgba(18, 42, 50, 0.18) 42%,
+      rgba(12, 25, 31, 0.52) 100%
     ),
     url("https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2200&q=90");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 
-/* ---------- Warm sunlight overlay ---------- */
+/* ---------- Warm atmospheric overlay ---------- */
 
 .background-overlay {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -3;
   pointer-events: none;
 
   background:
     radial-gradient(
-      circle at 18% 10%,
-      rgba(255, 232, 167, 0.42),
-      transparent 32%
+      circle at 16% 8%,
+      rgba(255, 236, 180, 0.45),
+      transparent 34%
     ),
     radial-gradient(
-      circle at 85% 22%,
-      rgba(255, 178, 147, 0.20),
-      transparent 28%
+      circle at 88% 18%,
+      rgba(255, 170, 139, 0.20),
+      transparent 30%
     ),
     linear-gradient(
       180deg,
-      rgba(255, 244, 215, 0.04),
-      rgba(13, 29, 35, 0.20)
+      rgba(255, 249, 225, 0.06),
+      rgba(8, 25, 31, 0.24)
     );
 }
 
 
-/* ---------- Decorative garden ---------- */
+/* ---------- Sun glow ---------- */
+
+.sun-glow {
+  position: fixed;
+  top: -110px;
+  left: -90px;
+  z-index: -2;
+
+  width: min(440px, 82vw);
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 238, 182, 0.50) 0%,
+      rgba(255, 213, 145, 0.23) 32%,
+      rgba(255, 195, 132, 0.07) 58%,
+      transparent 74%
+    );
+
+  filter: blur(8px);
+  animation: sunlightBreathe 8s ease-in-out infinite;
+}
+
+
+/* ---------- Decorative garden badge ---------- */
 
 .italy-garden {
   position: fixed;
-  top: 18px;
-  left: 18px;
-  z-index: 4;
+  top: max(14px, env(safe-area-inset-top));
+  left: max(14px, env(safe-area-inset-left));
+  z-index: 8;
 
-  padding: 10px 16px;
+  max-width: calc(100vw - 28px);
+  padding: 9px 15px;
 
-  font-size: clamp(26px, 5vw, 45px);
-  letter-spacing: 5px;
+  font-size: clamp(24px, 4vw, 40px);
+  letter-spacing: 4px;
   line-height: 1;
+  white-space: nowrap;
 
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.14);
 
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
 
   box-shadow:
-    0 10px 30px rgba(12, 30, 35, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.30);
+    0 12px 34px rgba(8, 25, 31, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
 
   transform-origin: top left;
   animation: gardenSway 7s ease-in-out infinite;
+}
+
+
+/* ---------- Decorative floral framing ---------- */
+
+.lemon-branch,
+.bougainvillea {
+  position: fixed;
+  z-index: 1;
+
+  pointer-events: none;
+  user-select: none;
+
+  filter: drop-shadow(0 12px 18px rgba(8, 25, 31, 0.20));
+}
+
+.lemon-branch {
+  right: -22px;
+  top: 11%;
+
+  font-size: clamp(64px, 10vw, 118px);
+
+  transform: rotate(12deg);
+  opacity: 0.92;
+
+  animation: branchFloat 8s ease-in-out infinite;
+}
+
+.bougainvillea {
+  left: -28px;
+  bottom: 6%;
+
+  font-size: clamp(62px, 11vw, 126px);
+
+  transform: rotate(-10deg);
+  opacity: 0.88;
+
+  animation: flowerFloat 9s ease-in-out infinite;
 }
 
 
@@ -132,22 +226,27 @@ body {
   background-image:
     radial-gradient(
       circle at 13% 20%,
-      rgba(255, 255, 255, 0.65) 0 1px,
+      rgba(255, 255, 255, 0.68) 0 1px,
       transparent 2px
     ),
     radial-gradient(
       circle at 82% 16%,
-      rgba(255, 246, 204, 0.55) 0 1px,
+      rgba(255, 246, 204, 0.60) 0 1px,
       transparent 2px
     ),
     radial-gradient(
       circle at 74% 72%,
-      rgba(255, 255, 255, 0.42) 0 1px,
+      rgba(255, 255, 255, 0.44) 0 1px,
       transparent 2px
     ),
     radial-gradient(
       circle at 22% 77%,
-      rgba(255, 248, 220, 0.46) 0 1px,
+      rgba(255, 248, 220, 0.50) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 51% 38%,
+      rgba(255, 255, 255, 0.32) 0 1px,
       transparent 2px
     );
 
@@ -159,37 +258,41 @@ body {
 
 .card {
   position: relative;
-  z-index: 2;
+  z-index: 4;
 
   width: min(920px, 100%);
-  padding: 48px 46px 38px;
+  max-width: 100%;
+
+  margin: 0 auto;
+  padding: clamp(36px, 5vw, 52px) clamp(22px, 5vw, 48px) clamp(32px, 4.5vw, 42px);
 
   overflow: hidden;
 
   text-align: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  border-radius: clamp(28px, 4vw, 40px);
 
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.27),
-      rgba(255, 255, 255, 0.12)
+      rgba(255, 255, 255, 0.29),
+      rgba(255, 255, 255, 0.11)
     );
 
-  -webkit-backdrop-filter: blur(22px) saturate(125%);
-  backdrop-filter: blur(22px) saturate(125%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  backdrop-filter: blur(24px) saturate(130%);
 
   box-shadow:
-    0 30px 90px rgba(6, 22, 29, 0.40),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    0 34px 100px rgba(5, 19, 25, 0.42),
+    0 8px 26px rgba(5, 19, 25, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48);
 
-  animation: cardArrival 1s ease-out both;
+  animation: cardArrival 0.9s ease-out both;
 }
 
 
-/* ---------- Glass highlight ---------- */
+/* ---------- Glass highlights ---------- */
 
 .card::before {
   content: "";
@@ -204,13 +307,10 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.90),
     transparent
   );
 }
-
-
-/* ---------- Warm glow inside card ---------- */
 
 .card::after {
   content: "";
@@ -218,51 +318,122 @@ body {
   position: absolute;
   top: -170px;
   right: -130px;
+  z-index: -1;
 
   width: 360px;
   height: 360px;
 
-  z-index: -1;
-
   border-radius: 50%;
 
   background: rgba(255, 220, 156, 0.18);
-  filter: blur(22px);
+  filter: blur(24px);
 }
 
 
 /* ---------- Main title ---------- */
 
 h1 {
+  max-width: 100%;
   margin: 0;
 
   color: #fffaf0;
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(48px, 8vw, 76px);
+  font-size: clamp(44px, 8vw, 76px);
   font-weight: 600;
-  line-height: 0.96;
-  letter-spacing: 0.5px;
+  line-height: 0.98;
+  letter-spacing: 0.3px;
+  overflow-wrap: anywhere;
 
   text-shadow:
-    0 3px 18px rgba(8, 25, 32, 0.34),
-    0 1px 0 rgba(255, 255, 255, 0.20);
+    0 3px 18px rgba(8, 25, 32, 0.36),
+    0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 
 /* ---------- Subtitle ---------- */
 
 .subtitle {
-  margin: 12px 0 34px;
+  max-width: 100%;
+  margin: 12px 0 30px;
 
   color: rgba(255, 252, 240, 0.93);
 
-  font-size: clamp(14px, 2.5vw, 18px);
+  font-size: clamp(12px, 2.5vw, 18px);
   font-weight: 400;
-  letter-spacing: 3px;
+  line-height: 1.5;
+  letter-spacing: clamp(1.8px, 0.6vw, 3px);
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 
   text-shadow: 0 2px 12px rgba(5, 20, 26, 0.45);
+}
+
+
+/* ---------- Italy greeting ---------- */
+
+.italy-greeting,
+.greeting {
+  width: min(580px, 100%);
+  max-width: 100%;
+
+  margin: 0 auto 20px;
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+
+  background: rgba(17, 48, 59, 0.17);
+
+  box-shadow:
+    0 12px 26px rgba(4, 19, 26, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+
+  color: rgba(255, 252, 241, 0.96);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(20px, 3.4vw, 29px);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+
+  overflow: hidden;
+}
+
+.greeting-icon,
+#greetingIcon {
+  flex: 0 0 auto;
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+#italyGreeting,
+#italyPeriod {
+  min-width: 0;
+  max-width: 100%;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+#italyPeriod {
+  display: block;
+
+  margin-top: 4px;
+
+  color: rgba(255, 244, 213, 0.78);
+
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: clamp(10px, 2vw, 13px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
 }
 
 
@@ -271,8 +442,13 @@ h1 {
 .countdown-card {
   position: relative;
 
-  margin: 0 auto 22px;
-  padding: 27px 24px 29px;
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 auto 20px;
+  padding: 24px clamp(12px, 2.5vw, 24px) 27px;
+
+  overflow: hidden;
 
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 27px;
@@ -289,16 +465,18 @@ h1 {
     inset 0 1px 0 rgba(255, 255, 255, 0.34);
 }
 
-
 .countdown-title {
-  margin-bottom: 18px;
+  max-width: 100%;
+  margin-bottom: 17px;
 
   color: rgba(255, 252, 239, 0.84);
 
-  font-size: clamp(12px, 2vw, 15px);
+  font-size: clamp(10px, 2vw, 15px);
   font-weight: 500;
-  letter-spacing: 3px;
+  line-height: 1.5;
+  letter-spacing: clamp(1.5px, 0.5vw, 3px);
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 
@@ -306,6 +484,7 @@ h1 {
 
 #countdown {
   width: 100%;
+  max-width: 100%;
 
   color: #fffaf0;
 
@@ -314,22 +493,23 @@ h1 {
     transform 0.25s ease;
 }
 
-
 .time-grid {
   width: 100%;
+  max-width: 100%;
 
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: clamp(8px, 1.5vw, 14px);
 }
-
 
 .time-box {
   min-width: 0;
-  padding: 20px 10px 17px;
+  padding: 18px 8px 15px;
 
-  border: 1px solid rgba(255, 255, 255, 0.26);
-  border-radius: 20px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.27);
+  border-radius: 19px;
 
   background:
     linear-gradient(
@@ -340,51 +520,59 @@ h1 {
 
   box-shadow:
     0 10px 26px rgba(8, 24, 31, 0.17),
-    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+    inset 0 1px 0 rgba(255, 255, 255, 0.27);
 
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
-
 .number {
+  width: 100%;
+  min-width: 0;
+
   overflow: hidden;
 
   color: #fffaf0;
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(37px, 6vw, 58px);
+  font-size: clamp(32px, 5.6vw, 58px);
   font-weight: 600;
-  line-height: 0.95;
+  line-height: 0.98;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 
   text-shadow:
     0 4px 18px rgba(8, 25, 32, 0.42),
     0 1px 0 rgba(255, 255, 255, 0.20);
 }
 
-
 .label {
-  margin-top: 11px;
+  max-width: 100%;
+  margin-top: 9px;
 
   color: rgba(255, 252, 240, 0.74);
 
-  font-size: clamp(9px, 1.7vw, 12px);
+  font-size: clamp(8px, 1.5vw, 12px);
   font-weight: 500;
-  letter-spacing: 1.8px;
+  line-height: 1.3;
+  letter-spacing: clamp(0.8px, 0.24vw, 1.8px);
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 
 /* ---------- Italy time panel ---------- */
 
 .info-card {
-  width: min(480px, 100%);
+  width: min(500px, 100%);
+  max-width: 100%;
 
-  margin: 0 auto 30px;
-  padding: 18px 22px;
+  margin: 0 auto 28px;
+  padding: 16px 18px;
 
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.29);
   border-radius: 22px;
 
   background: rgba(16, 46, 57, 0.21);
@@ -394,27 +582,32 @@ h1 {
     inset 0 1px 0 rgba(255, 255, 255, 0.27);
 }
 
-
 .italy-time {
+  max-width: 100%;
+
   color: rgba(255, 252, 242, 0.88);
 
-  font-size: clamp(13px, 2.2vw, 16px);
+  font-size: clamp(12px, 2.2vw, 16px);
   font-weight: 400;
-  line-height: 1.7;
-  letter-spacing: 1.2px;
+  line-height: 1.65;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
 }
 
-
 #italyClock {
-  display: inline-block;
-  margin-top: 2px;
+  display: block;
+
+  max-width: 100%;
+  margin-top: 3px;
 
   color: #fffaf0;
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(27px, 5vw, 39px);
+  font-size: clamp(25px, 5vw, 39px);
   font-weight: 600;
-  letter-spacing: 1px;
+  line-height: 1.1;
+  letter-spacing: 0.8px;
+  overflow-wrap: anywhere;
 
   text-shadow: 0 3px 16px rgba(6, 22, 28, 0.38);
 }
@@ -424,15 +617,17 @@ h1 {
 
 .quote {
   width: min(690px, 100%);
+  max-width: 100%;
 
-  margin: 29px auto 32px;
+  margin: 27px auto 30px;
 
   color: #fff4d7;
 
   font-family: "Great Vibes", cursive;
-  font-size: clamp(31px, 6vw, 48px);
+  font-size: clamp(29px, 5.6vw, 48px);
   font-weight: 400;
   line-height: 1.25;
+  overflow-wrap: anywhere;
 
   text-shadow:
     0 3px 17px rgba(10, 27, 31, 0.48),
@@ -444,45 +639,52 @@ h1 {
 
 .trip {
   width: min(580px, 100%);
+  max-width: 100%;
 
   margin: 0 auto;
-  padding: 21px 25px;
+  padding: 20px 18px;
 
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 
   color: rgba(255, 252, 242, 0.95);
 
-  line-height: 1.7;
+  line-height: 1.65;
+  overflow: hidden;
 }
 
-
 .flight {
+  max-width: 100%;
   margin-bottom: 2px;
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(24px, 4vw, 32px);
+  font-size: clamp(22px, 4vw, 32px);
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
-
 
 .date {
+  max-width: 100%;
+
   color: #fff0bf;
 
-  font-size: clamp(14px, 2.6vw, 18px);
+  font-size: clamp(13px, 2.6vw, 18px);
   font-weight: 500;
-  letter-spacing: 1.3px;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
 }
 
-
 .location {
+  max-width: 100%;
   margin-top: 5px;
 
   color: rgba(255, 255, 255, 0.78);
 
-  font-size: clamp(12px, 2.2vw, 15px);
+  font-size: clamp(11px, 2.2vw, 15px);
   font-weight: 300;
-  letter-spacing: 0.7px;
+  line-height: 1.55;
+  letter-spacing: 0.5px;
+  overflow-wrap: anywhere;
 }
 
 
@@ -490,47 +692,105 @@ h1 {
 
 .adventure {
   width: min(670px, 100%);
+  max-width: 100%;
 
-  margin: 31px auto 0;
+  margin: 29px auto 0;
 }
 
-
 .adventure h2 {
+  max-width: 100%;
   margin: 0 0 8px;
 
   color: #fff7e5;
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(27px, 4.8vw, 39px);
+  font-size: clamp(25px, 4.8vw, 39px);
   font-weight: 600;
   line-height: 1.15;
+  overflow-wrap: anywhere;
 
   text-shadow: 0 3px 15px rgba(8, 24, 30, 0.34);
 }
 
-
 .adventure p {
+  max-width: 100%;
   margin: 0;
 
   color: rgba(255, 252, 244, 0.82);
 
-  font-size: clamp(13px, 2.3vw, 16px);
+  font-size: clamp(12px, 2.3vw, 16px);
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.72;
+  overflow-wrap: anywhere;
 }
 
 
 /* ---------- Footer ---------- */
 
 .footer {
-  margin-top: 34px;
+  max-width: 100%;
+  margin-top: 31px;
 
-  color: rgba(255, 246, 220, 0.68);
+  color: rgba(255, 246, 220, 0.72);
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 17px;
+  font-size: clamp(15px, 2.5vw, 18px);
   font-style: italic;
-  letter-spacing: 1.2px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+}
+
+
+/* ---------- Italy scene periods ---------- */
+
+.scene-morning {
+  background-position: 47% center;
+}
+
+.scene-day {
+  background-position: center;
+}
+
+.scene-evening {
+  background-position: 56% center;
+}
+
+.scene-night {
+  background-position: 58% center;
+}
+
+.scene-morning .background-overlay {
+  background:
+    radial-gradient(circle at 15% 8%, rgba(255, 236, 181, 0.52), transparent 35%),
+    linear-gradient(180deg, rgba(255, 232, 182, 0.10), rgba(21, 48, 56, 0.23));
+}
+
+.scene-day .background-overlay {
+  background:
+    radial-gradient(circle at 17% 8%, rgba(255, 243, 191, 0.42), transparent 35%),
+    linear-gradient(180deg, rgba(255, 248, 219, 0.05), rgba(16, 42, 51, 0.18));
+}
+
+.scene-evening .background-overlay {
+  background:
+    radial-gradient(circle at 84% 13%, rgba(255, 172, 128, 0.38), transparent 34%),
+    linear-gradient(180deg, rgba(255, 180, 145, 0.11), rgba(19, 39, 49, 0.40));
+}
+
+.scene-night .background-overlay {
+  background:
+    radial-gradient(circle at 77% 8%, rgba(116, 150, 190, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(7, 23, 41, 0.36), rgba(3, 15, 27, 0.69));
+}
+
+.scene-night .stars {
+  opacity: 0.92;
+}
+
+.scene-morning .stars,
+.scene-day .stars {
+  opacity: 0.16;
 }
 
 
@@ -547,23 +807,21 @@ h1 {
   }
 }
 
-
 @keyframes starsGlow {
   0%,
   100% {
-    opacity: 0.35;
+    opacity: 0.34;
   }
 
   50% {
-    opacity: 0.75;
+    opacity: 0.76;
   }
 }
-
 
 @keyframes cardArrival {
   from {
     opacity: 0;
-    transform: translateY(24px) scale(0.985);
+    transform: translateY(22px) scale(0.985);
   }
 
   to {
@@ -572,97 +830,162 @@ h1 {
   }
 }
 
+@keyframes sunlightBreathe {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
 
-/* ---------- Tablet and phone ---------- */
+  50% {
+    opacity: 0.95;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes branchFloat {
+  0%,
+  100% {
+    transform: rotate(12deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(10deg) translateY(8px);
+  }
+}
+
+@keyframes flowerFloat {
+  0%,
+  100% {
+    transform: rotate(-10deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-8deg) translateY(-7px);
+  }
+}
+
+
+/* ---------- Tablet ---------- */
 
 @media (max-width: 768px) {
   .scene {
     align-items: flex-start;
 
     padding:
-      max(78px, env(safe-area-inset-top))
-      13px
+      max(74px, env(safe-area-inset-top))
+      12px
       max(38px, env(safe-area-inset-bottom));
 
-    background-position: 57% center;
     background-attachment: scroll;
+    background-position: 56% center;
   }
 
   .italy-garden {
-    top: max(12px, env(safe-area-inset-top));
-    left: 12px;
+    top: max(11px, env(safe-area-inset-top));
+    left: 11px;
 
     padding: 8px 12px;
 
-    font-size: 28px;
+    font-size: 27px;
     letter-spacing: 3px;
+  }
+
+  .lemon-branch {
+    top: 8%;
+    right: -42px;
+    opacity: 0.72;
+  }
+
+  .bougainvillea {
+    left: -46px;
+    bottom: 3%;
+    opacity: 0.68;
   }
 
   .card {
     width: 100%;
-    padding: 36px 17px 30px;
+    max-width: 100%;
+
+    padding: 34px 18px 29px;
 
     border-radius: 29px;
   }
 
+  h1 {
+    font-size: clamp(42px, 13vw, 62px);
+  }
+
   .subtitle {
-    margin-bottom: 26px;
-    letter-spacing: 2.1px;
+    margin-bottom: 23px;
+  }
+
+  .italy-greeting,
+  .greeting {
+    margin-bottom: 17px;
+    padding: 12px 12px;
+
+    border-radius: 17px;
+
+    font-size: clamp(19px, 6vw, 26px);
   }
 
   .countdown-card {
-    padding: 24px 12px 25px;
+    padding: 22px 11px 23px;
     border-radius: 23px;
   }
 
   .time-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 11px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
   }
 
   .time-box {
-    padding: 18px 8px 15px;
+    padding: 15px 4px 13px;
+    border-radius: 16px;
   }
 
   .number {
-    font-size: 42px;
+    font-size: clamp(27px, 9vw, 40px);
   }
 
   .label {
-    font-size: 10px;
-    letter-spacing: 1.3px;
+    margin-top: 7px;
+    font-size: clamp(7px, 2.2vw, 10px);
+    letter-spacing: 0.65px;
   }
 
   .info-card {
-    padding: 15px 14px;
+    margin-bottom: 25px;
+    padding: 14px 12px;
   }
 
   .quote {
-    margin-top: 27px;
-    margin-bottom: 29px;
+    margin-top: 24px;
+    margin-bottom: 27px;
   }
 
   .trip {
-    padding: 19px 10px;
+    padding: 18px 10px;
   }
 
   .adventure {
-    margin-top: 28px;
+    margin-top: 26px;
   }
 }
 
 
-/* ---------- Very small phones ---------- */
+/* ---------- Small phones ---------- */
 
-@media (max-width: 390px) {
+@media (max-width: 430px) {
   .scene {
-    padding-left: 9px;
-    padding-right: 9px;
+    padding-left: 7px;
+    padding-right: 7px;
   }
 
   .card {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 13px;
+    padding-right: 13px;
   }
 
   .countdown-card {
@@ -670,12 +993,59 @@ h1 {
     padding-right: 8px;
   }
 
+  .time-grid {
+    gap: 6px;
+  }
+
+  .time-box {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
   .number {
-    font-size: 38px;
+    font-size: clamp(26px, 8.7vw, 37px);
+  }
+
+  .label {
+    font-size: clamp(6.8px, 2.05vw, 9px);
+    letter-spacing: 0.45px;
   }
 
   .location {
-    letter-spacing: 0.2px;
+    letter-spacing: 0.1px;
+  }
+}
+
+
+/* ---------- Very small phones ---------- */
+
+@media (max-width: 360px) {
+  .scene {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .card {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .time-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .time-box {
+    padding: 14px 5px 12px;
+  }
+
+  .number {
+    font-size: 36px;
+  }
+
+  .label {
+    font-size: 9px;
+    letter-spacing: 0.8px;
   }
 }
 
@@ -685,7 +1055,10 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .italy-garden,
   .stars,
-  .card {
+  .card,
+  .sun-glow,
+  .lemon-branch,
+  .bougainvillea {
     animation: none;
   }
 
@@ -693,3 +1066,8 @@ h1 {
     transition: none;
   }
 }
+'''
+
+path = Path("/mnt/data/style.css")
+path.write_text(css, encoding="utf-8")
+print(f"Created {path} ({path.stat().st_size:,} bytes)")
