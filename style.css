@@ -71,11 +71,15 @@ body {
 @keyframes gentleSway {
 
     0%,100% {
+
         transform:rotate(-2deg);
+
     }
 
     50% {
+
         transform:rotate(2deg);
+
     }
 
 }
@@ -110,38 +114,32 @@ body {
 
 
 .floating-elements span:nth-child(1){
-
     left:10%;
     top:20%;
-
 }
+
 
 .floating-elements span:nth-child(2){
-
     right:15%;
     top:30%;
-
 }
+
 
 .floating-elements span:nth-child(3){
-
     left:20%;
     bottom:20%;
-
 }
+
 
 .floating-elements span:nth-child(4){
-
     right:20%;
     bottom:25%;
-
 }
 
-.floating-elements span:nth-child(5){
 
+.floating-elements span:nth-child(5){
     left:50%;
     top:45%;
-
 }
 
 
@@ -149,15 +147,11 @@ body {
 @keyframes floatAround {
 
     0%,100% {
-
         transform:translateY(0);
-
     }
 
     50% {
-
         transform:translateY(-25px);
-
     }
 
 }
@@ -199,6 +193,43 @@ body {
     border-radius:50%;
 
     background:white;
+
+}
+
+
+
+
+
+.firefly {
+
+    background:#fff4a3;
+
+    animation:
+    fireflyMove 6s infinite ease-in-out;
+
+}
+
+
+
+
+
+@keyframes fireflyMove {
+
+    0%,100% {
+
+        transform:translateY(0);
+
+        opacity:.2;
+
+    }
+
+    50% {
+
+        transform:translateY(-40px);
+
+        opacity:1;
+
+    }
 
 }
 
@@ -272,18 +303,15 @@ body {
 
         opacity:0;
 
-        transform:
-        translateY(30px);
+        transform:translateY(30px);
 
     }
-
 
     to {
 
         opacity:1;
 
-        transform:
-        translateY(0);
+        transform:translateY(0);
 
     }
 
@@ -358,7 +386,6 @@ h1 {
 
     }
 
-
     50% {
 
         box-shadow:
@@ -388,9 +415,7 @@ h1 {
 
 .italy-time span {
 
-    font-family:
-    'Cormorant Garamond',
-    serif;
+    font-family:'Cormorant Garamond',serif;
 
 }
 
@@ -434,6 +459,8 @@ h1 {
 
 
 
+
+
 .date {
 
     letter-spacing:1px;
@@ -442,11 +469,11 @@ h1 {
 
 
 
+
+
 .location {
 
-    font-family:
-    'Cormorant Garamond',
-    serif;
+    font-family:'Cormorant Garamond',serif;
 
     font-size:22px;
 
@@ -515,9 +542,7 @@ h1 {
 
 .arrival-details {
 
-    font-family:
-    'Cormorant Garamond',
-    serif;
+    font-family:'Cormorant Garamond',serif;
 
     font-size:22px;
 
