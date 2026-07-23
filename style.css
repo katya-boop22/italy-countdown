@@ -4,34 +4,62 @@
 
 
 body {
-    margin:0;
-    font-family:'Poppins', sans-serif;
-    overflow-x:hidden;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 
 
 
 .scene {
 
-    min-height:100vh;
+    min-height: 100vh;
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    position:relative;
+    position: relative;
 
-    overflow:hidden;
+    overflow: hidden;
 
     background:
+    linear-gradient(
+        rgba(30,80,120,.25),
+        rgba(20,60,90,.35)
+    ),
     url("https://images.unsplash.com/photo-1533105079780-92b9be482077")
     center/cover no-repeat;
 
-    transition:2s ease;
+    animation: waterDream 18s infinite alternate ease-in-out;
 
 }
+
+
+
+
+@keyframes waterDream {
+
+    from {
+
+        background-position:
+        center center;
+
+    }
+
+
+    to {
+
+        background-position:
+        center 55%;
+
+    }
+
+}
+
+
 
 
 
@@ -40,6 +68,13 @@ body {
     position:absolute;
 
     inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(255,220,160,.15),
+        rgba(20,50,80,.35)
+    );
 
     transition:2s ease;
 
@@ -62,41 +97,35 @@ body {
     z-index:3;
 
     animation:
-    gentleSway 5s infinite ease-in-out;
+    gardenBreeze 5s infinite ease-in-out;
 
 }
 
 
 
-@keyframes gentleSway {
+
+@keyframes gardenBreeze {
 
     0%,100% {
 
-        transform:rotate(-2deg);
+        transform:
+        rotate(-3deg)
+        translateY(0);
 
     }
+
 
     50% {
 
-        transform:rotate(2deg);
+        transform:
+        rotate(3deg)
+        translateY(-8px);
 
     }
 
 }
 
 
-
-
-
-.floating-elements {
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-}
 
 
 
@@ -107,51 +136,56 @@ body {
     font-size:35px;
 
     animation:
-    floatAround 12s infinite ease-in-out;
+    floatAround 10s infinite ease-in-out;
 
 }
 
 
 
-.floating-elements span:nth-child(1){
+.floating-elements span:nth-child(1) {
     left:10%;
     top:20%;
 }
 
-
-.floating-elements span:nth-child(2){
+.floating-elements span:nth-child(2) {
     right:15%;
     top:30%;
 }
 
-
-.floating-elements span:nth-child(3){
+.floating-elements span:nth-child(3) {
     left:20%;
     bottom:20%;
 }
 
-
-.floating-elements span:nth-child(4){
+.floating-elements span:nth-child(4) {
     right:20%;
     bottom:25%;
 }
 
-
-.floating-elements span:nth-child(5){
+.floating-elements span:nth-child(5) {
     left:50%;
     top:45%;
 }
 
 
 
+
+
 @keyframes floatAround {
 
     0%,100% {
-        transform:translateY(0);
+
+        transform:
+        translateY(0);
+
     }
 
+
     50% {
-        transform:translateY(-25px);
+
+        transform:
+        translateY(-30px);
+
     }
 
 }
@@ -169,11 +203,36 @@ body {
     opacity:0;
 
     background-image:
-    radial-gradient(circle,white 2px,transparent 3px);
+    radial-gradient(circle, white 2px, transparent 3px);
 
-    background-size:90px 90px;
+    background-size:100px 100px;
 
-    transition:2s ease;
+    animation:
+    starsMove 12s infinite linear;
+
+    transition:2s;
+
+}
+
+
+
+
+
+@keyframes starsMove {
+
+    from {
+
+        background-position:
+        0 0;
+
+    }
+
+    to {
+
+        background-position:
+        100px 100px;
+
+    }
 
 }
 
@@ -194,6 +253,9 @@ body {
 
     background:white;
 
+    animation:
+    sparkleFloat 5s infinite ease-in-out;
+
 }
 
 
@@ -202,10 +264,35 @@ body {
 
 .firefly {
 
-    background:#fff4a3;
-
     animation:
     fireflyMove 6s infinite ease-in-out;
+
+}
+
+
+
+
+
+@keyframes sparkleFloat {
+
+    0%,100% {
+
+        opacity:.2;
+
+        transform:
+        translateY(0);
+
+    }
+
+
+    50% {
+
+        opacity:1;
+
+        transform:
+        translateY(-30px);
+
+    }
 
 }
 
@@ -217,17 +304,20 @@ body {
 
     0%,100% {
 
-        transform:translateY(0);
-
         opacity:.2;
+
+        transform:
+        translateY(0);
 
     }
 
+
     50% {
 
-        transform:translateY(-40px);
-
         opacity:1;
+
+        transform:
+        translateY(-40px);
 
     }
 
@@ -254,9 +344,6 @@ body {
     font-size:28px;
 
     z-index:4;
-
-    text-shadow:
-    0 2px 10px rgba(0,0,0,.5);
 
 }
 
@@ -288,33 +375,6 @@ body {
     box-shadow:
     0 20px 50px rgba(0,0,0,.25);
 
-    animation:
-    cardAppear 1.8s ease;
-
-}
-
-
-
-
-
-@keyframes cardAppear {
-
-    from {
-
-        opacity:0;
-
-        transform:translateY(30px);
-
-    }
-
-    to {
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
 }
 
 
@@ -328,18 +388,6 @@ h1 {
     font-size:70px;
 
     margin:0;
-
-}
-
-
-
-
-
-.subtitle {
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:28px;
 
 }
 
@@ -366,42 +414,7 @@ h1 {
 
 
 
-.countdown-card {
-
-    animation:
-    softGlow 4s infinite ease-in-out;
-
-}
-
-
-
-
-
-@keyframes softGlow {
-
-    0%,100% {
-
-        box-shadow:
-        0 0 0 rgba(255,255,255,0);
-
-    }
-
-    50% {
-
-        box-shadow:
-        0 0 25px rgba(255,255,255,.25);
-
-    }
-
-}
-
-
-
-
-
 #countdown {
-
-    margin-top:15px;
 
     font-family:'Cormorant Garamond',serif;
 
@@ -413,19 +426,7 @@ h1 {
 
 
 
-.italy-time span {
-
-    font-family:'Cormorant Garamond',serif;
-
-}
-
-
-
-
-
 .quote {
-
-    margin-top:30px;
 
     font-family:'Cormorant Garamond',serif;
 
@@ -439,158 +440,11 @@ h1 {
 
 
 
-.trip {
+.scene.night .stars {
 
-    margin-top:25px;
-
-    line-height:1.8;
+    opacity:1;
 
 }
-
-
-
-
-
-.flight {
-
-    font-size:20px;
-
-}
-
-
-
-
-
-.date {
-
-    letter-spacing:1px;
-
-}
-
-
-
-
-
-.location {
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:22px;
-
-}
-
-
-
-
-
-.adventure {
-
-    margin-top:35px;
-
-}
-
-
-
-
-
-.adventure h2,
-.arrival-card h2 {
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:32px;
-
-}
-
-
-
-
-
-.arrival-card {
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-
-
-
-.arrival-card::before {
-
-    content:"🍋";
-
-    position:absolute;
-
-    font-size:90px;
-
-    opacity:.12;
-
-    right:20px;
-
-    top:10px;
-
-    transform:rotate(15deg);
-
-}
-
-
-
-
-
-.arrival-details {
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:22px;
-
-    line-height:1.8;
-
-}
-
-
-
-
-
-.footer {
-
-    margin-top:35px;
-
-}
-
-
-
-
-
-.scene.morning .background-overlay {
-
-    background:
-    linear-gradient(
-    to bottom,
-    rgba(255,220,150,.35),
-    rgba(40,100,130,.25)
-    );
-
-}
-
-
-
-
-
-.scene.afternoon .background-overlay {
-
-    background:
-    linear-gradient(
-    to bottom,
-    rgba(255,240,190,.25),
-    rgba(20,80,100,.35)
-    );
-
-}
-
-
 
 
 
@@ -598,13 +452,12 @@ h1 {
 
     background:
     linear-gradient(
-    to bottom,
-    rgba(255,160,120,.45),
-    rgba(90,40,70,.45)
+        to bottom,
+        rgba(255,150,100,.4),
+        rgba(80,30,70,.5)
     );
 
 }
-
 
 
 
@@ -613,20 +466,10 @@ h1 {
 
     background:
     linear-gradient(
-    to bottom,
-    rgba(15,25,60,.7),
-    rgba(5,15,40,.85)
+        to bottom,
+        rgba(10,20,60,.7),
+        rgba(5,10,30,.85)
     );
-
-}
-
-
-
-
-
-.scene.night .stars {
-
-    opacity:1;
 
 }
 
