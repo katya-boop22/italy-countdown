@@ -8,8 +8,12 @@ body {
 .scene {
   position: relative;
   height: 100vh;
-  background:
-    linear-gradient(to bottom, #f7cfa8 0%, #8fc7d8 45%, #2d7fa3 100%);
+  background: linear-gradient(
+    to bottom,
+    #f8cfa5 0%,
+    #9bd2e3 45%,
+    #1976a3 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +21,7 @@ body {
 }
 
 .scene::before {
-  content: "🍋 🌸";
+  content: "🍋 🌸 🌊";
   position: absolute;
   bottom: 55px;
   left: 25px;
@@ -33,10 +37,6 @@ body {
   right: 45px;
   font-size: 55px;
   animation: glow 3s ease-in-out infinite;
-}
-
-.scene {
-  background-size: 100% 100%;
 }
 
 .card {
