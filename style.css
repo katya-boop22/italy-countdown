@@ -1,7 +1,4 @@
 body {
-  background: red !important;
-}
-body {
   margin: 0;
   font-family: Georgia, serif;
   height: 100vh;
@@ -12,11 +9,27 @@ body {
   position: relative;
   height: 100vh;
   background:
-    linear-gradient(rgba(255,220,170,0.25), rgba(50,120,150,0.45)),
+    linear-gradient(rgba(255, 220, 170, 0.25), rgba(50, 120, 150, 0.45)),
     linear-gradient(#f6c98b, #4f89a6);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.scene::before {
+  content: "🍋 🌸 🌊";
+  position: absolute;
+  bottom: 40px;
+  font-size: 55px;
+  letter-spacing: 12px;
+}
+
+.scene::after {
+  content: "☀️";
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 45px;
 }
 
 .card {
@@ -26,6 +39,7 @@ body {
   text-align: center;
   max-width: 320px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 1;
 }
 
 h1 {
@@ -49,19 +63,4 @@ h1 {
 .quote {
   font-style: italic;
   color: #666;
-{
-  .scene::before 
-  content: "🍋 🌸 🌊";
-  position: absolute;
-  bottom: 40px;
-  font-size: 55px;
-  letter-spacing: 12px;
 }
-
-.scene::after {
-  content: "☀️";
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  font-size: 45px;
-}}
