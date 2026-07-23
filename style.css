@@ -2,7 +2,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -10,48 +9,47 @@ body {
 }
 
 
-
 .scene {
 
     min-height: 100vh;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    align-items: center;
+    align-items:center;
 
-    position: relative;
+    position:relative;
 
-    overflow: hidden;
+    overflow:hidden;
 
     background:
     url("https://images.unsplash.com/photo-1533105079780-92b9be482077")
     center/cover no-repeat;
 
-    transition: 2s ease;
+    transition:2s ease;
 
 }
-
 
 
 
 .background-overlay {
 
-    position: absolute;
+    position:absolute;
 
-    inset: 0;
+    inset:0;
 
-    transition: 2s ease;
+    transition:2s ease;
 
     background:
     linear-gradient(
     to bottom,
-    rgba(255,235,200,0.25),
-    rgba(30,70,90,0.35)
+    rgba(255,235,200,.25),
+    rgba(30,70,90,.35)
     );
 
 }
+
 
 
 
@@ -77,53 +75,13 @@ body {
 
 
 
-
-
 .floating-elements {
 
     position:absolute;
 
     inset:0;
 
-    z-index:2;
-
     pointer-events:none;
-
-}
-
-
-
-.floating-elements span {
-
-    position:absolute;
-
-    font-size:35px;
-
-    animation:
-    floatAround 12s infinite ease-in-out;
-
-}
-
-
-
-
-
-@keyframes floatAround {
-
-    0%,100% {
-
-        transform:
-        translateY(0);
-
-    }
-
-
-    50% {
-
-        transform:
-        translateY(-25px);
-
-    }
 
 }
 
@@ -135,16 +93,13 @@ body {
 
     0%,100% {
 
-        transform:
-        rotate(-2deg);
+        transform:rotate(-2deg);
 
     }
 
-
     50% {
 
-        transform:
-        rotate(2deg);
+        transform:rotate(2deg);
 
     }
 
@@ -165,10 +120,9 @@ body {
     transition:2s ease;
 
     background-image:
-    radial-gradient(circle, white 2px, transparent 3px);
+    radial-gradient(circle,white 2px,transparent 3px);
 
-    background-size:
-    90px 90px;
+    background-size:90px 90px;
 
 }
 
@@ -184,11 +138,9 @@ body {
 
     height:4px;
 
-    background:white;
-
     border-radius:50%;
 
-    opacity:0.8;
+    background:white;
 
     animation:
     sparkleMove 4s infinite ease-in-out;
@@ -197,22 +149,70 @@ body {
 
 
 
+
+
+.firefly {
+
+    position:absolute;
+
+    width:5px;
+
+    height:5px;
+
+    border-radius:50%;
+
+    background:#fff7b8;
+
+    opacity:.8;
+
+    animation:
+    fireflyMove 6s infinite ease-in-out;
+
+    z-index:2;
+
+}
+
+
+
+
+
+@keyframes fireflyMove {
+
+    0%,100% {
+
+        transform:translateY(0);
+
+        opacity:.2;
+
+    }
+
+    50% {
+
+        transform:translateY(-40px);
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+
+
 @keyframes sparkleMove {
 
     0%,100% {
 
-        transform:
-        scale(1);
+        transform:scale(1);
 
-        opacity:.4;
+        opacity:.3;
 
     }
 
-
     50% {
 
-        transform:
-        scale(2);
+        transform:scale(2);
 
         opacity:1;
 
@@ -236,9 +236,7 @@ body {
 
     color:white;
 
-    font-family:
-    'Cormorant Garamond',
-    serif;
+    font-family:'Cormorant Garamond',serif;
 
     font-size:28px;
 
@@ -268,8 +266,7 @@ body {
     background:
     rgba(255,255,255,.25);
 
-    backdrop-filter:
-    blur(15px);
+    backdrop-filter:blur(15px);
 
     text-align:center;
 
@@ -286,9 +283,7 @@ body {
 
 h1 {
 
-    font-family:
-    'Great Vibes',
-    cursive;
+    font-family:'Great Vibes',cursive;
 
     font-size:70px;
 
@@ -302,9 +297,7 @@ h1 {
 
 .subtitle {
 
-    font-family:
-    'Cormorant Garamond',
-    serif;
+    font-family:'Cormorant Garamond',serif;
 
     font-size:28px;
 
@@ -336,9 +329,7 @@ h1 {
 
     margin-top:15px;
 
-    font-family:
-    'Cormorant Garamond',
-    serif;
+    font-family:'Cormorant Garamond',serif;
 
     font-size:34px;
 
@@ -354,9 +345,7 @@ h1 {
 
     margin-top:30px;
 
-    font-family:
-    'Cormorant Garamond',
-    serif;
+    font-family:'Cormorant Garamond',serif;
 
     font-size:24px;
 
@@ -392,9 +381,7 @@ h1 {
 
 .adventure h2 {
 
-    font-family:
-    'Cormorant Garamond',
-    serif;
+    font-family:'Cormorant Garamond',serif;
 
     font-size:32px;
 
@@ -438,6 +425,7 @@ h1 {
 
 
 
+
 .scene.afternoon .background-overlay {
 
     background:
@@ -452,6 +440,7 @@ h1 {
 
 
 
+
 .scene.sunset .background-overlay {
 
     background:
@@ -462,6 +451,7 @@ h1 {
     );
 
 }
+
 
 
 
@@ -483,26 +473,24 @@ h1 {
 
 @media(max-width:600px){
 
+    h1 {
 
-h1 {
+        font-size:55px;
 
-    font-size:55px;
-
-}
-
-
-.card {
-
-    padding:30px;
-
-}
+    }
 
 
-.italy-garden {
+    .card {
 
-    font-size:40px;
+        padding:30px;
 
-}
+    }
 
+
+    .italy-garden {
+
+        font-size:40px;
+
+    }
 
 }
