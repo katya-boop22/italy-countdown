@@ -9,9 +9,12 @@ body {
   position: relative;
   height: 100vh;
   width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  overflow: hidden;
 
   background: linear-gradient(
     to bottom,
@@ -20,18 +23,54 @@ body {
     #83c4dc 65%,
     #14658c 100%
   );
-
-  overflow: hidden;
 }
 
+/* Soft stars */
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(255,255,255,0.8) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 90px 90px;
+  opacity: 0.25;
+}
+
+/* Floating scenery emojis */
+.scene::before {
+  content: "⛰️ 🌿";
+  position: absolute;
+  bottom: 70px;
+  left: 10px;
+  font-size: 65px;
+  opacity: 0.85;
+}
+
+.scene::after {
+  content: "🍋 🌸 🌊";
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 42px;
+  white-space: nowrap;
+
+  animation: float 4s ease-in-out infinite;
+}
+
+
+/* Main travel card */
 .card {
   position: relative;
-  z-index: 5;
+  z-index: 20;
 
   width: 80%;
   max-width: 340px;
 
-  background: rgba(255, 250, 240, 0.97);
+  background: #fffaf0;
 
   padding: 28px;
 
@@ -40,81 +79,134 @@ body {
   text-align: center;
 
   box-shadow:
-    0 15px 40px rgba(0,0,0,0.35);
+    0 20px 50px rgba(0,0,0,0.45);
 }
 
+
 h1 {
+  margin: 0;
+
   color: #7b4a22;
+
   font-size: 34px;
 }
 
+
 .subtitle {
   color: #9b642f;
+
   font-size: 20px;
 }
 
+
 #countdown {
-  background: #fff4df;
-  border-radius: 18px;
-  padding: 15px;
+
   margin: 18px 0;
 
+  padding: 15px;
+
+  background: #fff0d6;
+
+  border-radius: 18px;
+
   color: #55351c;
+
   font-size: 22px;
+
   font-weight: bold;
+
+  line-height: 1.5;
 }
+
 
 .italy-time {
+
   color: #7b4a22;
+
+  font-size: 15px;
 }
 
-.quote {
-  color: #6d5846;
-  font-style: italic;
-}
 
-.trip,
-.location {
+#italyClock {
+
+  font-weight: bold;
+
   color: #55351c;
 }
 
-.adventure {
-  border-top: 1px solid #d8b88c;
-  margin-top: 18px;
-  padding-top: 15px;
-}
 
-.adventure h2 {
-  color: #7b4a22;
-  font-size: 18px;
-}
+.quote {
 
-.adventure p {
   color: #6d5846;
+
+  font-style: italic;
+
+  font-size: 15px;
+}
+
+
+.trip {
+
+  margin-top: 20px;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #d8b88c;
+
+  color: #55351c;
+
+  line-height: 1.5;
+}
+
+
+.location {
+
+  color: #9b642f;
+
   font-size: 14px;
 }
 
-.scene::before {
-  content: "⛰️ 🌿";
-  position: absolute;
-  bottom: 80px;
-  left: 10px;
-  font-size: 65px;
+
+.adventure {
+
+  margin-top: 18px;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #d8b88c;
 }
 
-.scene::after {
-  content: "🍋 🌸 🌊";
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 42px;
 
-  animation: float 4s infinite ease-in-out;
+.adventure h2 {
+
+  color: #7b4a22;
+
+  font-size: 18px;
 }
+
+
+.adventure p {
+
+  color: #6d5846;
+
+  font-size: 14px;
+
+  font-style: italic;
+}
+
 
 @keyframes float {
+
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+
   50% {
     transform: translateX(-50%) translateY(-12px);
   }
+
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
 }
