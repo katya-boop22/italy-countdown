@@ -22,17 +22,14 @@ body {
   overflow: hidden;
 }
 
-/* Amalfi cliffs */
 .scene::before {
   content: "⛰️ 🌿";
   position: absolute;
   bottom: 120px;
   left: 20px;
   font-size: 80px;
-  opacity: 0.8;
 }
 
-/* Floating bottom details */
 .scene::after {
   content: "🍋 🌸 🌊";
   position: absolute;
@@ -41,34 +38,49 @@ body {
   transform: translateX(-50%);
   white-space: nowrap;
   font-size: 55px;
-  letter-spacing: 4px;
   animation: float 4s ease-in-out infinite;
 }
 
-/* Lemon trees and flowers */
-.stars::before {
-  content: "🍋🌿        🌸🌿🍋";
-  position: absolute;
-  bottom: 80px;
-  width: 100%;
+.card {
+  background: rgba(255, 248, 235, 0.92);
+  padding: 40px 35px;
+  border-radius: 30px;
   text-align: center;
-  font-size: 65px;
-  opacity: 0.9;
+  max-width: 330px;
+  border: 1px solid rgba(139,90,43,0.25);
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.18),
+    inset 0 0 20px rgba(255,255,255,0.6);
+  z-index: 2;
 }
 
-/* Sparkles */
-.stars {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.7) 2px, transparent 3px);
-  background-size: 80px 80px;
-  opacity: 0.25;
-  animation: shimmer 6s linear infinite;
+h1 {
+  font-size: 42px;
+  color: #8b5a2b;
+  margin: 0 0 8px;
+  letter-spacing: 1px;
 }
 
-/* Sun */
+.subtitle {
+  font-size: 21px;
+  color: #9a6b3f;
+  margin-bottom: 20px;
+}
+
+#countdown {
+  font-size: 30px;
+  font-weight: bold;
+  color: #5b4636;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.quote {
+  font-size: 17px;
+  font-style: italic;
+  color: #75604d;
+}
+
 .card::before {
   content: "☀️";
   position: fixed;
@@ -76,37 +88,6 @@ body {
   right: 45px;
   font-size: 60px;
   animation: glow 3s ease-in-out infinite;
-}
-
-.card {
-  background: rgba(255,255,255,0.88);
-  padding: 35px;
-  border-radius: 25px;
-  text-align: center;
-  max-width: 320px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  z-index: 2;
-}
-
-h1 {
-  font-size: 38px;
-  color: #8b5a2b;
-}
-
-.subtitle {
-  font-size: 20px;
-  color: #555;
-}
-
-#countdown {
-  font-size: 28px;
-  margin: 25px 0;
-  color: #333;
-}
-
-.quote {
-  font-style: italic;
-  color: #666;
 }
 
 @keyframes float {
@@ -137,15 +118,5 @@ h1 {
   100% {
     opacity: 0.7;
     transform: scale(1);
-  }
-}
-
-@keyframes shimmer {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-80px);
   }
 }
