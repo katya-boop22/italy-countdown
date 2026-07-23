@@ -4,58 +4,30 @@
 
 
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
 }
 
 
 
 .scene {
 
-    min-height: 100vh;
+    min-height:100vh;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    align-items: center;
+    align-items:center;
 
-    position: relative;
+    position:relative;
 
-    overflow: hidden;
+    overflow:hidden;
 
     background:
-    linear-gradient(
-        rgba(30,80,120,.25),
-        rgba(20,60,90,.35)
-    ),
     url("https://images.unsplash.com/photo-1533105079780-92b9be482077")
     center/cover no-repeat;
-
-    animation: waterDream 18s infinite alternate ease-in-out;
-
-}
-
-
-
-
-@keyframes waterDream {
-
-    from {
-
-        background-position:
-        center center;
-
-    }
-
-
-    to {
-
-        background-position:
-        center 55%;
-
-    }
 
 }
 
@@ -69,14 +41,184 @@ body {
 
     inset:0;
 
+    z-index:1;
+
     background:
     linear-gradient(
         to bottom,
         rgba(255,220,160,.15),
-        rgba(20,50,80,.35)
+        rgba(20,50,90,.35)
     );
 
-    transition:2s ease;
+}
+
+
+
+
+
+.water-layer {
+
+    position:absolute;
+
+    left:-10%;
+
+    bottom:-20px;
+
+    width:120%;
+
+    height:45%;
+
+    z-index:2;
+
+    opacity:.35;
+
+    background:
+
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.18) 0px,
+        rgba(255,255,255,.18) 2px,
+        transparent 5px,
+        transparent 12px
+    );
+
+    animation:
+    waterMove 8s infinite linear;
+
+}
+
+
+
+
+
+@keyframes waterMove {
+
+    from {
+
+        transform:
+        translateX(0);
+
+    }
+
+
+    to {
+
+        transform:
+        translateX(-80px);
+
+    }
+
+}
+
+
+
+
+
+.cloud-layer {
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:200%;
+
+    height:40%;
+
+    z-index:2;
+
+    opacity:.25;
+
+    background:
+
+    radial-gradient(
+        ellipse,
+        white 0%,
+        transparent 70%
+    );
+
+    animation:
+    cloudsMove 45s infinite linear;
+
+}
+
+
+
+
+
+@keyframes cloudsMove {
+
+    from {
+
+        transform:
+        translateX(0);
+
+    }
+
+
+    to {
+
+        transform:
+        translateX(-50%);
+
+    }
+
+}
+
+
+
+
+
+.sun-glow {
+
+    position:absolute;
+
+    width:350px;
+
+    height:350px;
+
+    top:-100px;
+
+    right:-80px;
+
+    z-index:2;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,240,180,.45),
+        transparent 70%
+    );
+
+
+    animation:
+    sunPulse 8s infinite ease-in-out;
+
+}
+
+
+
+
+
+@keyframes sunPulse {
+
+    0%,100% {
+
+        opacity:.5;
+
+        transform:scale(1);
+
+    }
+
+
+    50% {
+
+        opacity:.9;
+
+        transform:scale(1.15);
+
+    }
 
 }
 
@@ -92,9 +234,9 @@ body {
 
     left:25px;
 
-    font-size:60px;
+    z-index:4;
 
-    z-index:3;
+    font-size:60px;
 
     animation:
     gardenBreeze 5s infinite ease-in-out;
@@ -104,13 +246,13 @@ body {
 
 
 
+
 @keyframes gardenBreeze {
 
     0%,100% {
 
         transform:
-        rotate(-3deg)
-        translateY(0);
+        rotate(-3deg);
 
     }
 
@@ -118,8 +260,7 @@ body {
     50% {
 
         transform:
-        rotate(3deg)
-        translateY(-8px);
+        rotate(3deg);
 
     }
 
@@ -135,36 +276,11 @@ body {
 
     font-size:35px;
 
+    z-index:3;
+
     animation:
     floatAround 10s infinite ease-in-out;
 
-}
-
-
-
-.floating-elements span:nth-child(1) {
-    left:10%;
-    top:20%;
-}
-
-.floating-elements span:nth-child(2) {
-    right:15%;
-    top:30%;
-}
-
-.floating-elements span:nth-child(3) {
-    left:20%;
-    bottom:20%;
-}
-
-.floating-elements span:nth-child(4) {
-    right:20%;
-    bottom:25%;
-}
-
-.floating-elements span:nth-child(5) {
-    left:50%;
-    top:45%;
 }
 
 
@@ -184,7 +300,7 @@ body {
     50% {
 
         transform:
-        translateY(-30px);
+        translateY(-25px);
 
     }
 
@@ -200,17 +316,19 @@ body {
 
     inset:0;
 
+    z-index:3;
+
     opacity:0;
 
     background-image:
-    radial-gradient(circle, white 2px, transparent 3px);
+
+    radial-gradient(
+        circle,
+        white 2px,
+        transparent 3px
+    );
 
     background-size:100px 100px;
-
-    animation:
-    starsMove 12s infinite linear;
-
-    transition:2s;
 
 }
 
@@ -218,21 +336,9 @@ body {
 
 
 
-@keyframes starsMove {
+.scene.night .stars {
 
-    from {
-
-        background-position:
-        0 0;
-
-    }
-
-    to {
-
-        background-position:
-        100px 100px;
-
-    }
+    opacity:1;
 
 }
 
@@ -252,96 +358,6 @@ body {
     border-radius:50%;
 
     background:white;
-
-    animation:
-    sparkleFloat 5s infinite ease-in-out;
-
-}
-
-
-
-
-
-.firefly {
-
-    animation:
-    fireflyMove 6s infinite ease-in-out;
-
-}
-
-
-
-
-
-@keyframes sparkleFloat {
-
-    0%,100% {
-
-        opacity:.2;
-
-        transform:
-        translateY(0);
-
-    }
-
-
-    50% {
-
-        opacity:1;
-
-        transform:
-        translateY(-30px);
-
-    }
-
-}
-
-
-
-
-
-@keyframes fireflyMove {
-
-    0%,100% {
-
-        opacity:.2;
-
-        transform:
-        translateY(0);
-
-    }
-
-
-    50% {
-
-        opacity:1;
-
-        transform:
-        translateY(-40px);
-
-    }
-
-}
-
-
-
-
-
-.sky-details {
-
-    position:absolute;
-
-    bottom:35px;
-
-    width:100%;
-
-    text-align:center;
-
-    color:white;
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:28px;
 
     z-index:4;
 
@@ -440,24 +456,24 @@ h1 {
 
 
 
-.scene.night .stars {
+.sky-details {
 
-    opacity:1;
+    position:absolute;
+
+    bottom:35px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:white;
+
+    z-index:5;
+
+    font-size:28px;
 
 }
 
-
-
-.scene.sunset .background-overlay {
-
-    background:
-    linear-gradient(
-        to bottom,
-        rgba(255,150,100,.4),
-        rgba(80,30,70,.5)
-    );
-
-}
 
 
 
@@ -489,13 +505,6 @@ h1 {
     .card {
 
         padding:30px;
-
-    }
-
-
-    .italy-garden {
-
-        font-size:40px;
 
     }
 
