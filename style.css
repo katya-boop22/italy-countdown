@@ -74,7 +74,21 @@ h1 {
   font-size: 26px;
   font-weight: bold;
   line-height: 1.6;
-  letter-spacing: 1px;
+}
+
+.italy-time {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.35);
+  color: #8b5a2b;
+  font-size: 16px;
+}
+
+#italyClock {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5b4636;
 }
 
 .quote {
