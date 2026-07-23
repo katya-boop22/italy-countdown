@@ -10,31 +10,96 @@ body {
   height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
 
   background: linear-gradient(
     to bottom,
-    #f7c99c 0%,
-    #ffd9c0 35%,
-    #8fc9df 65%,
-    #176d98 100%
+    #e9a85d 0%,
+    #ffd6ad 35%,
+    #83c4dc 65%,
+    #14658c 100%
   );
+
+  overflow: hidden;
 }
 
-.stars {
-  position: absolute;
-  inset: 0;
-  opacity: 0.35;
+.card {
+  position: relative;
+  z-index: 5;
+
+  width: 80%;
+  max-width: 340px;
+
+  background: rgba(255, 250, 240, 0.97);
+
+  padding: 28px;
+
+  border-radius: 28px;
+
+  text-align: center;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.35);
+}
+
+h1 {
+  color: #7b4a22;
+  font-size: 34px;
+}
+
+.subtitle {
+  color: #9b642f;
+  font-size: 20px;
+}
+
+#countdown {
+  background: #fff4df;
+  border-radius: 18px;
+  padding: 15px;
+  margin: 18px 0;
+
+  color: #55351c;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.italy-time {
+  color: #7b4a22;
+}
+
+.quote {
+  color: #6d5846;
+  font-style: italic;
+}
+
+.trip,
+.location {
+  color: #55351c;
+}
+
+.adventure {
+  border-top: 1px solid #d8b88c;
+  margin-top: 18px;
+  padding-top: 15px;
+}
+
+.adventure h2 {
+  color: #7b4a22;
+  font-size: 18px;
+}
+
+.adventure p {
+  color: #6d5846;
+  font-size: 14px;
 }
 
 .scene::before {
   content: "⛰️ 🌿";
   position: absolute;
-  bottom: 70px;
+  bottom: 80px;
   left: 10px;
-  font-size: 55px;
+  font-size: 65px;
 }
 
 .scene::after {
@@ -43,81 +108,13 @@ body {
   bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 40px;
-  white-space: nowrap;
-  animation: float 4s ease-in-out infinite;
-}
+  font-size: 42px;
 
-.card {
-  position: relative;
-  z-index: 2;
-
-  width: calc(100% - 50px);
-  max-width: 330px;
-
-  max-height: 80vh;
-  overflow: hidden;
-
-  padding: 25px;
-
-  background: rgba(255,248,235,0.96);
-
-  border-radius: 25px;
-
-  text-align: center;
-
-  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-}
-
-h1 {
-  margin: 0;
-  font-size: 32px;
-  color: #8b5a2b;
-}
-
-.subtitle {
-  font-size: 18px;
-  color: #9a6b3f;
-}
-
-#countdown {
-  margin: 15px 0;
-  padding: 12px;
-
-  background: rgba(255,255,255,0.5);
-  border-radius: 15px;
-
-  font-size: 21px;
-  color: #5b4636;
-}
-
-.italy-time {
-  font-size: 14px;
-}
-
-#italyClock {
-  font-weight: bold;
-}
-
-.quote {
-  font-size: 14px;
-}
-
-.trip,
-.location {
-  font-size: 14px;
-}
-
-.adventure h2 {
-  font-size: 17px;
-}
-
-.adventure p {
-  font-size: 13px;
+  animation: float 4s infinite ease-in-out;
 }
 
 @keyframes float {
   50% {
-    transform: translateX(-50%) translateY(-10px);
+    transform: translateX(-50%) translateY(-12px);
   }
 }
