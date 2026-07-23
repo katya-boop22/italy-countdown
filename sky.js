@@ -26,7 +26,7 @@ function updateSkyDetails() {
     if (hour >= 6 && hour < 12) {
 
         skyDetails.innerHTML =
-        "☀️ Morning light over the Amalfi Coast";
+        "☀️ Morning light • Lemon trees waking in Italy 🍋";
 
     }
 
@@ -34,7 +34,7 @@ function updateSkyDetails() {
     else if (hour >= 12 && hour < 18) {
 
         skyDetails.innerHTML =
-        "🍋 Sunny Italian afternoon";
+        "🌿 Afternoon breeze • Amalfi Coast views 🌊";
 
     }
 
@@ -42,7 +42,7 @@ function updateSkyDetails() {
     else if (hour >= 18 && hour < 21) {
 
         skyDetails.innerHTML =
-        "🌅 Golden hour in Italy";
+        "🌅 Golden sunset • The coast is glowing ✨";
 
     }
 
@@ -50,7 +50,7 @@ function updateSkyDetails() {
     else {
 
         skyDetails.innerHTML =
-        "🌙 ✨ Stars above the Mediterranean";
+        "🌙 ✨ A quiet Italian night under the stars";
 
     }
 
