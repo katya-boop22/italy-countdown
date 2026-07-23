@@ -1,193 +1,101 @@
-const tripDate = new Date("September 22, 2026 11:00:00").getTime();
+// ======================================================
+// LA DOLCE ATTESA
+// Complete script.js
+// ======================================================
 
+const departure = new Date("September 22, 2026 11:00:00 GMT-0700");
+
+const countdown = document.getElementById("countdown");
+const italyClock = document.getElementById("italyClock");
 
 function updateCountdown() {
 
-    const now = new Date().getTime();
+    const now = new Date();
 
-    const distance = tripDate - now;
-
+    const distance = departure - now;
 
     if (distance <= 0) {
 
-        document.getElementById("countdown").innerHTML =
-        "🇮🇹 We are in Italy!";
+        countdown.innerHTML =
+        "✨ Benvenuti in Italia! ✨";
 
         return;
-
     }
 
-
-    const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-    );
-
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
     const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
     );
-
 
     const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
     );
-
 
     const seconds = Math.floor(
-        (distance % (1000 * 60)) /
-        1000
+        (distance % (1000 * 60))
+        / 1000
     );
 
+    countdown.innerHTML = `
 
-    document.getElementById("countdown").innerHTML =
-    `${days} Days<br>
-    ${hours} Hours<br>
-    ${minutes} Minutes<br>
-    ${seconds} Seconds`;
+<div class="time-grid">
+
+<div class="time-box">
+<div class="number">${days}</div>
+<div class="label">Days</div>
+</div>
+
+<div class="time-box">
+<div class="number">${hours}</div>
+<div class="label">Hours</div>
+</div>
+
+<div class="time-box">
+<div class="number">${minutes}</div>
+<div class="label">Minutes</div>
+</div>
+
+<div class="time-box">
+<div class="number">${seconds}</div>
+<div class="label">Seconds</div>
+</div>
+
+</div>
+
+`;
 
 }
-
-
 
 function updateItalyClock() {
 
-    const italyTime =
-    new Intl.DateTimeFormat(
-        "en-GB",
-        {
-            timeZone:"Europe/Rome",
-            hour:"2-digit",
-            minute:"2-digit",
-            second:"2-digit",
-            hour12:false
-        }
+    const now = new Date();
 
-    ).format(new Date());
+    const options = {
 
+        timeZone: "Europe/Rome",
 
-    document.getElementById("italyClock").innerHTML =
-    italyTime;
+        weekday: "long",
 
-}
+        hour: "numeric",
 
+        minute: "2-digit",
 
+        second: "2-digit",
 
-function updateItalyMood() {
+        hour12: true
 
-    const hour = Number(
+    };
 
-        new Intl.DateTimeFormat(
-            "en-GB",
-            {
-                timeZone:"Europe/Rome",
-                hour:"numeric",
-                hour12:false
-            }
-
-        ).format(new Date())
-
-    );
-
-
-    const scene =
-    document.getElementById("scene");
-
-
-    const mood =
-    document.getElementById("italyMood");
-
-
-
-    if (hour >= 6 && hour < 12) {
-
-        scene.className =
-        "scene morning";
-
-        mood.innerHTML =
-        "☀️ Buongiorno from Italy";
-
-    }
-
-    else if (hour >= 12 && hour < 18) {
-
-        scene.className =
-        "scene afternoon";
-
-        mood.innerHTML =
-        "🌿 A beautiful Italian afternoon";
-
-    }
-
-    else if (hour >= 18 && hour < 21) {
-
-        scene.className =
-        "scene sunset";
-
-        mood.innerHTML =
-        "🌅 Golden hour on the Amalfi Coast";
-
-    }
-
-    else {
-
-        scene.className =
-        "scene night";
-
-        mood.innerHTML =
-        "🌙 A peaceful Italian night";
-
-    }
+    italyClock.innerHTML =
+    now.toLocaleString("en-CA", options);
 
 }
-
-
-
-function createSparkles() {
-
-    const scene =
-    document.getElementById("scene");
-
-
-    for (let i = 0; i < 15; i++) {
-
-        const sparkle =
-        document.createElement("div");
-
-
-        sparkle.className =
-        "sparkle";
-
-
-        sparkle.style.left =
-        Math.random() * 100 + "%";
-
-
-        sparkle.style.top =
-        Math.random() * 100 + "%";
-
-
-        scene.appendChild(sparkle);
-
-    }
-
-}
-
-
 
 updateCountdown();
-
 updateItalyClock();
 
-updateItalyMood();
-
-createSparkles();
-
-
-
 setInterval(updateCountdown, 1000);
-
 setInterval(updateItalyClock, 1000);
-
-setInterval(updateItalyMood, 60000);
