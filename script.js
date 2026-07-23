@@ -1,11 +1,13 @@
 const tripDate = new Date("September 22, 2026 11:00:00").getTime();
 
 
+
 function updateCountdown() {
 
     const now = new Date().getTime();
 
     const distance = tripDate - now;
+
 
 
     if (distance <= 0) {
@@ -16,6 +18,7 @@ function updateCountdown() {
         return;
 
     }
+
 
 
     const days = Math.floor(
@@ -41,6 +44,7 @@ function updateCountdown() {
     );
 
 
+
     document.getElementById("countdown").innerHTML =
 
     `${days} Days<br>
@@ -56,7 +60,9 @@ function updateCountdown() {
 
 function updateItalyClock() {
 
+
     const italyTime =
+
     new Intl.DateTimeFormat(
         "en-GB",
         {
@@ -70,8 +76,10 @@ function updateItalyClock() {
     ).format(new Date());
 
 
+
     document.getElementById("italyClock").innerHTML =
     italyTime;
+
 
 }
 
@@ -97,6 +105,7 @@ function updateItalyMood() {
     );
 
 
+
     const scene =
     document.getElementById("scene");
 
@@ -106,46 +115,63 @@ function updateItalyMood() {
 
 
 
+
+
     if (hour >= 6 && hour < 12) {
+
 
         scene.className =
         "scene morning";
 
+
         mood.innerHTML =
         "☀️ Buongiorno from Italy";
 
+
     }
+
 
 
     else if (hour >= 12 && hour < 18) {
 
+
         scene.className =
         "scene afternoon";
+
 
         mood.innerHTML =
         "🌿 A beautiful Italian afternoon";
 
+
     }
+
 
 
     else if (hour >= 18 && hour < 21) {
 
+
         scene.className =
         "scene sunset";
+
 
         mood.innerHTML =
         "🌅 Golden hour on the Amalfi Coast";
 
+
     }
+
 
 
     else {
 
+
         scene.className =
         "scene night";
 
+
         mood.innerHTML =
         "🌙 A peaceful Italian night";
+
 
     }
 
@@ -157,42 +183,57 @@ function updateItalyMood() {
 
 function updateArrivalMessage() {
 
+
     const now = new Date();
+
 
     const arrivalDate =
     new Date("September 22, 2026 11:00:00");
+
 
 
     const arrivalBox =
     document.querySelector(".arrival-card");
 
 
+
     if (now >= arrivalDate) {
 
 
-        arrivalBox.innerHTML = `
+        arrivalBox.innerHTML =
+
+        `
 
         <h2>
         🇮🇹 Benvenuti in Italia
         </h2>
+
 
         <p>
         The waiting is over.
         The memories begin.
         </p>
 
+
         <div class="arrival-details">
 
+
         🍋 First lemon tree spotted<br>
+
         🌊 First Mediterranean view<br>
+
         ☕ First Italian coffee<br>
+
         📸 First unforgettable moment
 
+
         </div>
+
 
         `;
 
     }
+
 
 }
 
@@ -207,6 +248,7 @@ function createSparkles() {
     document.getElementById("scene");
 
 
+
     for (let i = 0; i < 15; i++) {
 
 
@@ -214,25 +256,32 @@ function createSparkles() {
         document.createElement("div");
 
 
+
         sparkle.className =
         "sparkle";
+
 
 
         sparkle.style.left =
         Math.random() * 100 + "%";
 
 
+
         sparkle.style.top =
         Math.random() * 100 + "%";
+
 
 
         sparkle.style.animationDelay =
         Math.random() * 5 + "s";
 
 
+
         scene.appendChild(sparkle);
 
+
     }
+
 
 }
 
@@ -253,10 +302,10 @@ createSparkles();
 
 
 
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 
-setInterval(updateItalyClock, 1000);
+setInterval(updateItalyClock,1000);
 
-setInterval(updateItalyMood, 60000);
+setInterval(updateItalyMood,60000);
 
-setInterval(updateArrivalMessage, 60000);
+setInterval(updateArrivalMessage,60000);
