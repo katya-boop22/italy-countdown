@@ -1,279 +1,317 @@
+/* ---------- Google Fonts ---------- */
+
 body {
-  margin: 0;
-  font-family: Georgia, serif;
-  height: 100vh;
-  overflow: hidden;
-}
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 
-.scene {
-  position: relative;
-  height: 100vh;
-  width: 100%;
+    font-family: 'Poppins', sans-serif;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    color: white;
 
-  overflow: hidden;
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.45)
+        ),
+        url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2200&q=80");
 
-  background: linear-gradient(
-    to bottom,
-    #e9a85d 0%,
-    #ffd6ad 35%,
-    #83c4dc 65%,
-    #14658c 100%
-  );
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 
-/* Soft stars */
-.stars {
-  position: absolute;
-  inset: 0;
+/* ---------- Main Scene ---------- */
 
-  background-image: radial-gradient(
-    rgba(255,255,255,0.8) 1.5px,
-    transparent 1.5px
-  );
+.scene{
 
-  background-size: 90px 90px;
+    min-height:100vh;
 
-  opacity: 0.25;
-}
+    display:flex;
 
+    justify-content:center;
 
-/* Amalfi lemon garden */
-.italy-garden {
+    align-items:center;
 
-  position: absolute;
+    padding:40px;
 
-  bottom: 55px;
-
-  right: 10px;
-
-  font-size: 55px;
-
-  z-index: 3;
-
-  animation: gentleSway 5s ease-in-out infinite;
+    position:relative;
 
 }
 
 
-/* Floating bottom icons */
-.scene::after {
+/* ---------- Dark Overlay ---------- */
 
-  content: "🍋 🌸 🌊";
+.background-overlay{
 
-  position: absolute;
+    position:absolute;
 
-  bottom: 25px;
+    inset:0;
 
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  font-size: 42px;
-
-  white-space: nowrap;
-
-  animation: float 4s ease-in-out infinite;
+    background:rgba(0,0,0,.15);
 
 }
 
 
-/* Landscape */
-.scene::before {
+/* ---------- Garden ---------- */
 
-  content: "⛰️ 🌿";
+.italy-garden{
 
-  position: absolute;
+    position:absolute;
 
-  bottom: 80px;
+    top:35px;
 
-  left: 10px;
+    left:40px;
 
-  font-size: 65px;
+    font-size:42px;
 
-}
-
-
-/* Main card */
-.card {
-
-  position: relative;
-
-  z-index: 20;
-
-  width: 82%;
-
-  max-width: 350px;
-
-  background: rgba(255,250,240,0.98);
-
-  padding: 32px 28px;
-
-  border-radius: 32px;
-
-  text-align: center;
-
-  border: 1px solid rgba(139,90,43,0.25);
-
-  box-shadow:
-    0 25px 60px rgba(0,0,0,0.35),
-    inset 0 0 30px rgba(255,255,255,0.7);
+    z-index:3;
 
 }
 
 
-h1 {
+/* ---------- Main Card ---------- */
 
-  margin-top: 5px;
+.card{
 
-  color: #7b4a22;
+    position:relative;
 
-  font-size: 36px;
+    z-index:5;
 
-  letter-spacing: 1px;
+    width:900px;
 
-}
+    max-width:95%;
 
+    padding:55px;
 
-.subtitle {
+    border-radius:35px;
 
-  color: #a06b35;
+    background:rgba(255,255,255,.18);
 
-  font-size: 20px;
+    backdrop-filter:blur(18px);
 
-}
+    -webkit-backdrop-filter:blur(18px);
 
+    border:1px solid rgba(255,255,255,.35);
 
-#countdown {
+    box-shadow:
 
-  margin: 20px 0;
+        0 20px 60px rgba(0,0,0,.35);
 
-  padding: 16px;
-
-  background: #fff1d8;
-
-  border-radius: 20px;
-
-  color: #55351c;
-
-  font-size: 23px;
-
-  font-weight: bold;
+    text-align:center;
 
 }
 
 
-.italy-time {
+/* ---------- Title ---------- */
 
-  padding: 12px;
+h1{
 
-  background: rgba(255,235,200,0.35);
+    font-family:'Cormorant Garamond',serif;
 
-  border-radius: 15px;
+    font-size:64px;
 
-  color: #7b4a22;
+    margin-bottom:5px;
 
-}
-
-
-#italyClock {
-
-  font-weight: bold;
-
-  color: #55351c;
+    font-weight:600;
 
 }
 
 
-.quote {
+.subtitle{
 
-  color: #75604d;
+    font-size:20px;
 
-  font-style: italic;
+    opacity:.95;
 
-}
-
-
-.trip {
-
-  margin-top: 22px;
-
-  padding-top: 18px;
-
-  border-top: 1px solid rgba(139,90,43,0.25);
-
-  color: #55351c;
+    margin-bottom:40px;
 
 }
 
 
-.location {
+/* ---------- Countdown ---------- */
 
-  color: #a06b35;
+.countdown-card{
 
-}
+    background:rgba(255,255,255,.15);
 
+    border-radius:25px;
 
-.adventure {
+    padding:30px;
 
-  margin-top: 22px;
-
-  padding-top: 18px;
-
-  border-top: 1px solid rgba(139,90,43,0.25);
+    margin-bottom:25px;
 
 }
 
 
-.adventure h2 {
+.countdown-title{
 
-  color: #7b4a22;
+    font-size:18px;
 
-  font-size: 19px;
+    letter-spacing:2px;
 
-}
+    text-transform:uppercase;
 
+    opacity:.8;
 
-.adventure p {
-
-  color: #75604d;
-
-  font-style: italic;
-
-  font-size: 14px;
+    margin-bottom:18px;
 
 }
 
 
-/* Animations */
+#countdown{
 
-@keyframes float {
+    font-size:50px;
 
-  50% {
-
-    transform: translateX(-50%) translateY(-12px);
-
-  }
+    font-weight:700;
 
 }
 
 
-@keyframes gentleSway {
+/* ---------- Info ---------- */
 
-  0%, 100% {
+.info-card{
 
-    transform: rotate(-2deg);
+    background:rgba(255,255,255,.13);
 
-  }
+    padding:22px;
 
-  50% {
+    border-radius:22px;
 
-    transform: rotate(2deg);
+    margin-bottom:30px;
 
-  }
+}
+
+
+.italy-time{
+
+    font-size:24px;
+
+}
+
+
+/* ---------- Quote ---------- */
+
+.quote{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:40px;
+
+    margin:40px 0;
+
+}
+
+
+/* ---------- Trip ---------- */
+
+.trip{
+
+    margin-top:15px;
+
+    line-height:2;
+
+    font-size:19px;
+
+}
+
+
+.flight{
+
+    font-weight:bold;
+
+    font-size:22px;
+
+}
+
+
+.location{
+
+    opacity:.9;
+
+}
+
+
+/* ---------- Adventure ---------- */
+
+.adventure{
+
+    margin-top:45px;
+
+}
+
+
+.adventure h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:40px;
+
+}
+
+
+.adventure p{
+
+    font-size:19px;
+
+    line-height:1.8;
+
+}
+
+
+/* ---------- Footer ---------- */
+
+.footer{
+
+    margin-top:55px;
+
+    opacity:.8;
+
+    font-style:italic;
+
+}
+
+
+/* ---------- Stars ---------- */
+
+.stars{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:768px){
+
+.card{
+
+padding:30px;
+
+}
+
+h1{
+
+font-size:46px;
+
+}
+
+.quote{
+
+font-size:30px;
+
+}
+
+#countdown{
+
+font-size:34px;
+
+}
 
 }
