@@ -1,24 +1,18 @@
-.scene.night::before {
-  content: "✨ ⭐ ✨ ⭐ ✨";
-  position: absolute;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  letter-spacing: 25px;
-  animation: twinkle 3s ease-in-out infinite;
+.adventure {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(139,90,43,0.25);
 }
 
-@keyframes twinkle {
-  0% {
-    opacity: 0.4;
-  }
+.adventure h2 {
+  font-size: 20px;
+  color: #8b5a2b;
+  margin: 0 0 10px;
+}
 
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.4;
-  }
+.adventure p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #75604d;
+  font-style: italic;
 }
