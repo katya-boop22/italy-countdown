@@ -4,7 +4,9 @@ function updateCountdown() {
   const now = new Date().getTime();
   const distance = tripDate - now;
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const days = Math.floor(
+    distance / (1000 * 60 * 60 * 24)
+  );
 
   const hours = Math.floor(
     (distance % (1000 * 60 * 60 * 24)) /
@@ -28,38 +30,29 @@ function updateCountdown() {
      ${seconds} seconds`;
 }
 
-function updateItalyClock() {
-  const now = new Date();
 
-  const italyHour = Number(
-    new Intl.DateTimeFormat("en-US", {
+function updateItalyClock() {
+
+  const italyTime = new Date().toLocaleString(
+    "en-US",
+    {
       timeZone: "Europe/Rome",
+      weekday: "long",
       hour: "numeric",
-      hour12: false
-    }).format(now)
+      minute: "2-digit",
+      second: "2-digit"
+    }
   );
 
-  const italyTime = now.toLocaleString("en-US", {
-    timeZone: "Europe/Rome",
-    weekday: "long",
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit"
-  });
+  document.getElementById("italyClock").innerHTML =
+    italyTime;
 
-  document.getElementById("italyClock").innerHTML = italyTime;
-
-  const scene = document.querySelector(".scene");
-
-  if (italyHour >= 7 && italyHour < 19) {
-    scene.classList.remove("night");
-  } else {
-    scene.classList.add("night");
-  }
 }
+
 
 updateCountdown();
 updateItalyClock();
+
 
 setInterval(updateCountdown, 1000);
 setInterval(updateItalyClock, 1000);
