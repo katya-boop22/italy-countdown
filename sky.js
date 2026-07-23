@@ -10,6 +10,7 @@ scene.appendChild(skyDetails);
 
 
 
+
 function updateSkyDetails() {
 
 
@@ -18,7 +19,6 @@ function updateSkyDetails() {
         new Intl.DateTimeFormat(
 
             "en-GB",
-
             {
                 timeZone:"Europe/Rome",
                 hour:"numeric",
@@ -28,6 +28,7 @@ function updateSkyDetails() {
         ).format(new Date())
 
     );
+
 
 
 
@@ -42,6 +43,7 @@ function updateSkyDetails() {
     }
 
 
+
     else if (hour >= 12 && hour < 18) {
 
 
@@ -50,6 +52,7 @@ function updateSkyDetails() {
 
 
     }
+
 
 
     else if (hour >= 18 && hour < 21) {
@@ -62,13 +65,16 @@ function updateSkyDetails() {
     }
 
 
+
     else {
 
 
         skyDetails.innerHTML =
         "🌙 Italian night • Stars over the Mediterranean";
 
+
     }
+
 
 }
 
@@ -86,26 +92,32 @@ function createFireflies() {
         document.createElement("div");
 
 
+
         firefly.className =
         "firefly";
+
 
 
         firefly.style.left =
         Math.random() * 100 + "%";
 
 
+
         firefly.style.top =
         Math.random() * 100 + "%";
+
 
 
         firefly.style.animationDelay =
         Math.random() * 6 + "s";
 
 
+
         scene.appendChild(firefly);
 
 
     }
+
 
 }
 
