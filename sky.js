@@ -22,11 +22,11 @@ function updateSkyDetails() {
 
             {
 
-                timeZone: "Europe/Rome",
+                timeZone:"Europe/Rome",
 
-                hour: "numeric",
+                hour:"numeric",
 
-                hour12: false
+                hour12:false
 
             }
 
@@ -42,7 +42,7 @@ function updateSkyDetails() {
 
 
         skyDetails.innerHTML =
-        "☀️ Morning light • Lemon trees waking in Italy 🍋";
+        "☀️ Morning in Italy • Lemon trees glowing 🍋";
 
 
     }
@@ -53,7 +53,7 @@ function updateSkyDetails() {
 
 
         skyDetails.innerHTML =
-        "🌿 Afternoon breeze • Amalfi waters sparkling 🌊";
+        "🌿 Afternoon in Italy • Sea breeze from the coast 🌊";
 
 
     }
@@ -64,7 +64,7 @@ function updateSkyDetails() {
 
 
         skyDetails.innerHTML =
-        "🌅 Golden hour • Italian sunsets and memories ✨";
+        "🌅 Sunset in Italy • Golden Amalfi skies ✨";
 
 
     }
@@ -75,11 +75,9 @@ function updateSkyDetails() {
 
 
         skyDetails.innerHTML =
-        "🌙 ✨ Stars above the Mediterranean";
-
+        "🌙 Night in Italy • Stars above the Mediterranean";
 
     }
-
 
 }
 
@@ -87,10 +85,10 @@ function updateSkyDetails() {
 
 
 
-function addFloatingFireflies() {
+function createFireflies() {
 
 
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 20; i++) {
 
 
         const firefly =
@@ -110,7 +108,7 @@ function addFloatingFireflies() {
 
 
         firefly.style.animationDelay =
-        Math.random() * 5 + "s";
+        Math.random() * 6 + "s";
 
 
         scene.appendChild(firefly);
@@ -126,7 +124,7 @@ function addFloatingFireflies() {
 
 updateSkyDetails();
 
-addFloatingFireflies();
+createFireflies();
 
 
 
