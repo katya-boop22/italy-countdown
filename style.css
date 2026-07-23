@@ -22,7 +22,19 @@ body {
   overflow: hidden;
 }
 
-/* Sun glow */
+/* Distant Amalfi cliffs */
+.scene::before {
+  content: "⛰️ 🌿 🍋 🌸 🌊";
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 55px;
+  letter-spacing: 6px;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Sun */
 .scene::after {
   content: "☀️";
   position: absolute;
@@ -32,19 +44,7 @@ body {
   animation: glow 3s ease-in-out infinite;
 }
 
-/* Amalfi details */
-.scene::before {
-  content: "🍋   🌸   🌊";
-  position: absolute;
-  bottom: 45px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 55px;
-  letter-spacing: 8px;
-  animation: float 4s ease-in-out infinite;
-}
-
-/* Sea shimmer */
+/* Sparkle layer */
 .stars {
   position: absolute;
   width: 100%;
