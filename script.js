@@ -5,13 +5,28 @@ function updateCountdown() {
   const distance = tripDate - now;
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
+  const hours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) /
+    (1000 * 60 * 60)
+  );
+
+  const minutes = Math.floor(
+    (distance % (1000 * 60 * 60)) /
+    (1000 * 60)
+  );
+
+  const seconds = Math.floor(
+    (distance % (1000 * 60)) /
+    1000
+  );
 
   document.getElementById("countdown").innerHTML =
-    `${days} days<br>${hours} hours ${minutes} minutes ${seconds} seconds`;
+    `${days} days<br>
+     ${hours} hours<br>
+     ${minutes} minutes<br>
+     ${seconds} seconds`;
 }
 
 updateCountdown();
+
 setInterval(updateCountdown, 1000);
