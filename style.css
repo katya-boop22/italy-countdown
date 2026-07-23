@@ -1067,7 +1067,147 @@ h1 {
   }
 }
 '''
+/* =========================================================
+   MOBILE WIDTH + DECORATIVE FRAMING
+   ========================================================= */
 
+@media (max-width: 768px) {
+  .scene {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  .card {
+    width: calc(100vw - 6px);
+    max-width: calc(100vw - 6px);
+
+    padding-left: 14px;
+    padding-right: 14px;
+
+    border-radius: 28px;
+  }
+
+  .countdown-card {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .time-grid {
+    gap: 8px;
+  }
+
+  .time-box {
+    min-height: 145px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 18px 4px 15px;
+  }
+
+  .number {
+    font-size: clamp(31px, 9.5vw, 42px);
+  }
+
+  .label {
+    font-size: clamp(7px, 2.15vw, 10px);
+  }
+
+  .lemon-branch,
+  .bougainvillea {
+    z-index: 2;
+    display: flex;
+  }
+
+  .lemon-branch {
+    top: 9%;
+    right: -28px;
+
+    width: 150px;
+    height: 260px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    font-size: 58px;
+    opacity: 0.92;
+
+    transform: rotate(9deg);
+  }
+
+  .lemon-branch span:nth-child(odd) {
+    transform: rotate(-22deg);
+  }
+
+  .lemon-branch span:nth-child(even) {
+    transform: rotate(14deg);
+  }
+
+  .bougainvillea {
+    left: -28px;
+    bottom: 5%;
+
+    width: 150px;
+    height: 300px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    font-size: 55px;
+    opacity: 0.88;
+
+    transform: rotate(-8deg);
+  }
+
+  .bougainvillea span:nth-child(even) {
+    transform: translateX(25px) rotate(12deg);
+  }
+
+  .bougainvillea span:nth-child(odd) {
+    transform: translateX(-4px) rotate(-10deg);
+  }
+}
+
+@media (max-width: 430px) {
+  .scene {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .card {
+    width: calc(100vw - 4px);
+    max-width: calc(100vw - 4px);
+
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .time-grid {
+    gap: 7px;
+  }
+
+  .time-box {
+    min-height: 138px;
+  }
+
+  .number {
+    font-size: clamp(29px, 9vw, 39px);
+  }
+
+  .lemon-branch {
+    right: -42px;
+    opacity: 0.78;
+  }
+
+  .bougainvillea {
+    left: -43px;
+    opacity: 0.74;
+  }
+}
 path = Path("/mnt/data/style.css")
 path.write_text(css, encoding="utf-8")
 print(f"Created {path} ({path.stat().st_size:,} bytes)")
