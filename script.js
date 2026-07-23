@@ -14,7 +14,7 @@ const scene = document.getElementById("scene");
 
 function updateCountdown() {
   const now = new Date();
-  const distance = departure.getTime() - now.getTime();
+  const distance = departure - now;
 
   if (distance <= 0) {
     countdown.innerHTML = "✨ Benvenuti in Italia! ✨";
@@ -28,40 +28,22 @@ function updateCountdown() {
 
   countdown.innerHTML = `
     <div class="time-grid">
-      <div class="time-box">
-        <div class="number">${days}</div>
-        <div class="label">Days</div>
-      </div>
-
-      <div class="time-box">
-        <div class="number">${hours}</div>
-        <div class="label">Hours</div>
-      </div>
-
-      <div class="time-box">
-        <div class="number">${minutes}</div>
-        <div class="label">Minutes</div>
-      </div>
-
-      <div class="time-box">
-        <div class="number">${seconds}</div>
-        <div class="label">Seconds</div>
-      </div>
-    </div>
-  `;
+      <div class="time-box"><div class="number">${days}</div><div class="label">Days</div></div>
+      <div class="time-box"><div class="number">${hours}</div><div class="label">Hours</div></div>
+      <div class="time-box"><div class="number">${minutes}</div><div class="label">Minutes</div></div>
+      <div class="time-box"><div class="number">${seconds}</div><div class="label">Seconds</div></div>
+    </div>`;
 }
 
-function getItalyHour() {
-  const hourFormatter = new Intl.DateTimeFormat("en-CA", {
+function italyHour() {
+  return Number(new Intl.DateTimeFormat("en-CA", {
     timeZone: "Europe/Rome",
     hour: "2-digit",
     hourCycle: "h23"
-  });
-
-  return Number(hourFormatter.format(new Date()));
+  }).format(new Date()));
 }
 
-function updateItalyExperience() {
+function updateItaly() {
   const now = new Date();
 
   italyClock.textContent = new Intl.DateTimeFormat("en-CA", {
@@ -73,26 +55,21 @@ function updateItalyExperience() {
     hour12: true
   }).format(now);
 
-  const italyHour = getItalyHour();
+  scene.classList.remove("scene-morning","scene-day","scene-evening","scene-night");
 
-  scene.classList.remove(
-    "scene-morning",
-    "scene-day",
-    "scene-evening",
-    "scene-night"
-  );
+  const h = italyHour();
 
-  if (italyHour >= 5 && italyHour < 12) {
+  if (h >= 5 && h < 12) {
     italyGreeting.textContent = "Buongiorno, Jipka";
     greetingIcon.textContent = "☀️";
     italyPeriod.textContent = "Italian morning";
     scene.classList.add("scene-morning");
-  } else if (italyHour >= 12 && italyHour < 18) {
+  } else if (h >= 12 && h < 18) {
     italyGreeting.textContent = "Buon pomeriggio, Jipka";
     greetingIcon.textContent = "🍋";
     italyPeriod.textContent = "Italian afternoon";
     scene.classList.add("scene-day");
-  } else if (italyHour >= 18 && italyHour < 21) {
+  } else if (h >= 18 && h < 21) {
     italyGreeting.textContent = "Buonasera, Jipka";
     greetingIcon.textContent = "🌅";
     italyPeriod.textContent = "Italian evening";
@@ -106,7 +83,7 @@ function updateItalyExperience() {
 }
 
 updateCountdown();
-updateItalyExperience();
+updateItaly();
 
 setInterval(updateCountdown, 1000);
-setInterval(updateItalyExperience, 1000);
+setInterval(updateItaly, 1000);
