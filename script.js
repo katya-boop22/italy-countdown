@@ -29,15 +29,33 @@ function updateCountdown() {
 }
 
 function updateItalyClock() {
-  const italyTime = new Date().toLocaleString("en-US", {
+  const now = new Date();
+
+  const italyHour = Number(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "Europe/Rome",
+      hour: "numeric",
+      hour12: false
+    }).format(now)
+  );
+
+  const italyTime = now.toLocaleString("en-US", {
     timeZone: "Europe/Rome",
+    weekday: "long",
     hour: "numeric",
     minute: "2-digit",
-    second: "2-digit",
-    weekday: "long"
+    second: "2-digit"
   });
 
   document.getElementById("italyClock").innerHTML = italyTime;
+
+  const scene = document.querySelector(".scene");
+
+  if (italyHour >= 7 && italyHour < 19) {
+    scene.classList.remove("night");
+  } else {
+    scene.classList.add("night");
+  }
 }
 
 updateCountdown();
