@@ -8,13 +8,12 @@ body {
 .scene {
   position: relative;
   height: 100vh;
-  background:
-    linear-gradient(
-      to bottom,
-      #f8d3ad 0%,
-      #9ed3e3 45%,
-      #1976a3 100%
-    );
+  background: linear-gradient(
+    to bottom,
+    #f8d3ad 0%,
+    #9ed3e3 45%,
+    #1976a3 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,11 +23,10 @@ body {
 .scene::before {
   content: "🍋 🌸 🌊";
   position: absolute;
-  bottom: 55px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 35px;
+  width: 100%;
+  text-align: center;
   font-size: 55px;
-  letter-spacing: 12px;
   animation: float 4s ease-in-out infinite;
 }
 
@@ -42,7 +40,7 @@ body {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255,255,255,0.88);
   padding: 35px;
   border-radius: 25px;
   text-align: center;
@@ -76,13 +74,13 @@ h1 {
 
 @keyframes float {
   0% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(-12px);
+    transform: translateY(-12px);
   }
   100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 }
 
