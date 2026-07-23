@@ -10,7 +10,6 @@ scene.appendChild(skyDetails);
 
 
 
-
 function updateSkyDetails() {
 
 
@@ -21,19 +20,14 @@ function updateSkyDetails() {
             "en-GB",
 
             {
-
                 timeZone:"Europe/Rome",
-
                 hour:"numeric",
-
                 hour12:false
-
             }
 
         ).format(new Date())
 
     );
-
 
 
 
@@ -48,34 +42,31 @@ function updateSkyDetails() {
     }
 
 
-
     else if (hour >= 12 && hour < 18) {
 
 
         skyDetails.innerHTML =
-        "🌿 Afternoon in Italy • Sea breeze from the coast 🌊";
+        "🌿 Afternoon in Italy • Amalfi waters sparkling 🌊";
 
 
     }
-
 
 
     else if (hour >= 18 && hour < 21) {
 
 
         skyDetails.innerHTML =
-        "🌅 Sunset in Italy • Golden Amalfi skies ✨";
+        "🌅 Golden hour in Italy • Memories waiting ✨";
 
 
     }
-
 
 
     else {
 
 
         skyDetails.innerHTML =
-        "🌙 Night in Italy • Stars above the Mediterranean";
+        "🌙 Italian night • Stars over the Mediterranean";
 
     }
 
