@@ -8,35 +8,52 @@ body {
 .scene {
   position: relative;
   height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    #f8d3ad 0%,
-    #9ed3e3 45%,
-    #1976a3 100%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      #f6c89b 0%,
+      #ffd8b8 25%,
+      #8fc9dd 55%,
+      #176d98 100%
+    );
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.scene::before {
-  content: "🍋   🌸   🌊";
-  position: absolute;
-  bottom: 35px;
-  width: 100%;
-  text-align: center;
-  font-size: 55px;
-  animation: float 4s ease-in-out infinite;
-}
-
+/* Sun glow */
 .scene::after {
   content: "☀️";
   position: absolute;
   top: 45px;
   right: 45px;
-  font-size: 55px;
+  font-size: 60px;
   animation: glow 3s ease-in-out infinite;
+}
+
+/* Amalfi details */
+.scene::before {
+  content: "🍋   🌸   🌊";
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 55px;
+  letter-spacing: 8px;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Sea shimmer */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.7) 2px, transparent 3px);
+  background-size: 80px 80px;
+  opacity: 0.25;
+  animation: shimmer 6s linear infinite;
 }
 
 .card {
@@ -52,6 +69,7 @@ body {
 h1 {
   font-size: 38px;
   color: #8b5a2b;
+  margin-bottom: 10px;
 }
 
 .subtitle {
@@ -63,6 +81,7 @@ h1 {
   font-size: 28px;
   margin: 25px 0;
   color: #333;
+  line-height: 1.4;
 }
 
 .quote {
@@ -72,13 +91,15 @@ h1 {
 
 @keyframes float {
   0% {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
+
   50% {
-    transform: translateY(-12px);
+    transform: translateX(-50%) translateY(-12px);
   }
+
   100% {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -87,12 +108,24 @@ h1 {
     opacity: 0.7;
     transform: scale(1);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.15);
   }
+
   100% {
     opacity: 0.7;
     transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-80px);
   }
 }
