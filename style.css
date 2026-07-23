@@ -10,7 +10,6 @@ body {
 
 
 .scene {
-
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -29,8 +28,8 @@ body {
 }
 
 
-.background-overlay {
 
+.background-overlay {
     position: absolute;
     inset: 0;
 
@@ -41,28 +40,30 @@ body {
         rgba(30,70,90,0.35)
     );
 
+    transition: 2s ease;
 }
+
 
 
 .italy-garden {
-
     position: absolute;
 
-    top: 30px;
-    left: 30px;
+    top: 25px;
+    left: 25px;
 
-    font-size: 55px;
+    font-size: 60px;
 
-    letter-spacing: 10px;
+    letter-spacing: 12px;
 
     z-index: 2;
-
 }
+
 
 
 .stars {
 
     position: absolute;
+
     inset: 0;
 
     opacity: 0;
@@ -73,7 +74,34 @@ body {
     radial-gradient(circle, white 2px, transparent 3px);
 
     background-size:
-    80px 80px;
+    90px 90px;
+
+}
+
+
+
+.sky-details {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: white;
+
+    font-family:
+    'Cormorant Garamond',
+    serif;
+
+    font-size: 28px;
+
+    z-index: 3;
+
+    text-shadow:
+    0 2px 10px rgba(0,0,0,0.4);
 
 }
 
@@ -83,7 +111,7 @@ body {
 
     position: relative;
 
-    z-index: 3;
+    z-index: 4;
 
     width: min(90%, 520px);
 
@@ -248,8 +276,7 @@ h1 {
 
 
 
-/* TIME OF DAY EFFECTS */
-
+/* Morning */
 
 .scene.morning .background-overlay {
 
@@ -264,6 +291,8 @@ h1 {
 
 
 
+/* Afternoon */
+
 .scene.afternoon .background-overlay {
 
     background:
@@ -276,6 +305,8 @@ h1 {
 }
 
 
+
+/* Sunset */
 
 .scene.sunset .background-overlay {
 
@@ -290,6 +321,8 @@ h1 {
 
 
 
+/* Night */
+
 .scene.night .background-overlay {
 
     background:
@@ -303,6 +336,14 @@ h1 {
 
 
 
+.scene.night .stars {
+
+    opacity: 1;
+
+}
+
+
+
 @media(max-width:600px){
 
     h1 {
@@ -311,16 +352,17 @@ h1 {
 
 
     .card {
-
         padding: 30px;
-
     }
 
 
     .italy-garden {
-
         font-size: 40px;
+    }
 
+
+    .sky-details {
+        font-size: 22px;
     }
 
 }
