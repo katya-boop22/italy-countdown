@@ -22,18 +22,17 @@ body {
   overflow: hidden;
 }
 
-/* Distant cliffs */
+/* Amalfi cliffs */
 .scene::before {
   content: "⛰️ 🌿";
   position: absolute;
   bottom: 120px;
   left: 20px;
   font-size: 80px;
-  letter-spacing: 15px;
   opacity: 0.8;
 }
 
-/* Floating Italy details */
+/* Floating bottom details */
 .scene::after {
   content: "🍋 🌸 🌊";
   position: absolute;
@@ -44,6 +43,29 @@ body {
   font-size: 55px;
   letter-spacing: 4px;
   animation: float 4s ease-in-out infinite;
+}
+
+/* Lemon trees and flowers */
+.stars::before {
+  content: "🍋🌿        🌸🌿🍋";
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+  text-align: center;
+  font-size: 65px;
+  opacity: 0.9;
+}
+
+/* Sparkles */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.7) 2px, transparent 3px);
+  background-size: 80px 80px;
+  opacity: 0.25;
+  animation: shimmer 6s linear infinite;
 }
 
 /* Sun */
@@ -115,5 +137,15 @@ h1 {
   100% {
     opacity: 0.7;
     transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-80px);
   }
 }
