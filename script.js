@@ -25,17 +25,20 @@ function updateCountdown() {
         distance / (1000 * 60 * 60 * 24)
     );
 
+
     const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24))
         /
         (1000 * 60 * 60)
     );
 
+
     const minutes = Math.floor(
         (distance % (1000 * 60 * 60))
         /
         (1000 * 60)
     );
+
 
     const seconds = Math.floor(
         (distance % (1000 * 60))
@@ -46,6 +49,7 @@ function updateCountdown() {
 
 
     document.getElementById("countdown").innerHTML =
+
     `${days} Days<br>
     ${hours} Hours<br>
     ${minutes} Minutes<br>
@@ -59,8 +63,8 @@ function updateCountdown() {
 
 function updateItalyClock() {
 
-
-    const italyTime = new Intl.DateTimeFormat(
+    const italyTime =
+    new Intl.DateTimeFormat(
         "en-GB",
         {
             timeZone:"Europe/Rome",
@@ -78,7 +82,6 @@ function updateItalyClock() {
     italyTime;
 
 }
-
 
 
 
@@ -130,7 +133,6 @@ function updateItalyMood() {
     }
 
 
-
     else if (hour >= 12 && hour < 18) {
 
 
@@ -145,7 +147,6 @@ function updateItalyMood() {
     }
 
 
-
     else if (hour >= 18 && hour < 21) {
 
 
@@ -158,7 +159,6 @@ function updateItalyMood() {
 
 
     }
-
 
 
     else {
@@ -180,39 +180,51 @@ function updateItalyMood() {
 
 
 
-function createSparkles() {
+function updateArrivalMessage() {
 
 
-    const scene =
-    document.getElementById("scene");
+    const now = new Date();
+
+    const arrivalDate =
+    new Date("September 22, 2026 11:00:00");
 
 
-    for (let i = 0; i < 15; i++) {
+
+    const arrivalBox =
+    document.querySelector(".arrival-card");
 
 
-        const sparkle =
-        document.createElement("div");
+
+    if (now >= arrivalDate) {
 
 
-        sparkle.className =
-        "sparkle";
+        arrivalBox.innerHTML =
 
+        `
 
-        sparkle.style.left =
-        Math.random() * 100 + "%";
+        <h2>
+        🇮🇹 Benvenuti in Italia
+        </h2>
 
+        <p>
+        The waiting is over.
+        The memories begin.
+        </p>
 
-        sparkle.style.top =
-        Math.random() * 100 + "%";
+        <div class="arrival-details">
 
+        🍋 First lemon tree spotted<br>
+        🌊 First Mediterranean view<br>
+        ☕ First Italian coffee<br>
+        📸 First unforgettable moment
 
-        sparkle.style.animationDelay =
-        Math.random() * 5 + "s";
+        </div>
 
+        `;
 
-        scene.appendChild(sparkle);
 
     }
+
 
 }
 
@@ -226,7 +238,7 @@ updateItalyClock();
 
 updateItalyMood();
 
-createSparkles();
+updateArrivalMessage();
 
 
 
@@ -245,5 +257,11 @@ setInterval(
 
 setInterval(
     updateItalyMood,
+    60000
+);
+
+
+setInterval(
+    updateArrivalMessage,
     60000
 );
