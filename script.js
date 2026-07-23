@@ -1,6 +1,7 @@
 const tripDate = new Date("September 22, 2026 11:00:00").getTime();
 
 
+
 function updateCountdown() {
 
     const now = new Date().getTime();
@@ -8,7 +9,8 @@ function updateCountdown() {
     const distance = tripDate - now;
 
 
-    if (distance < 0) {
+
+    if (distance <= 0) {
 
         document.getElementById("countdown").innerHTML =
         "🇮🇹 We are in Italy!";
@@ -62,25 +64,21 @@ function updateCountdown() {
 function updateItalyClock() {
 
 
-    const options = {
-
-        timeZone: "Europe/Rome",
-
-        hour: "2-digit",
-
-        minute: "2-digit",
-
-        second: "2-digit",
-
-        hour12: false
-
-    };
-
-
-
     const italyTime = new Intl.DateTimeFormat(
         "en-GB",
-        options
+        {
+
+            timeZone: "Europe/Rome",
+
+            hour: "2-digit",
+
+            minute: "2-digit",
+
+            second: "2-digit",
+
+            hour12: false
+
+        }
 
     ).format(new Date());
 
@@ -91,7 +89,6 @@ function updateItalyClock() {
 
 
 }
-
 
 
 
@@ -108,11 +105,11 @@ function updateItalyMood() {
 
             {
 
-                timeZone: "Europe/Rome",
+                timeZone:"Europe/Rome",
 
-                hour: "numeric",
+                hour:"numeric",
 
-                hour12: false
+                hour12:false
 
             }
 
@@ -128,10 +125,13 @@ function updateItalyMood() {
 
 
 
+
+
     if (hour >= 6 && hour < 12) {
 
 
-        scene.className = "scene morning";
+        scene.className =
+        "scene morning";
 
 
         mood.innerHTML =
@@ -145,7 +145,8 @@ function updateItalyMood() {
     else if (hour >= 12 && hour < 18) {
 
 
-        scene.className = "scene afternoon";
+        scene.className =
+        "scene afternoon";
 
 
         mood.innerHTML =
@@ -159,7 +160,8 @@ function updateItalyMood() {
     else if (hour >= 18 && hour < 21) {
 
 
-        scene.className = "scene sunset";
+        scene.className =
+        "scene sunset";
 
 
         mood.innerHTML =
@@ -173,11 +175,50 @@ function updateItalyMood() {
     else {
 
 
-        scene.className = "scene night";
+        scene.className =
+        "scene night";
 
 
         mood.innerHTML =
         "🌙 A peaceful Italian night";
+
+
+    }
+
+
+}
+
+
+
+
+
+function createFloatingSparkles() {
+
+
+    const sparkleContainer =
+    document.querySelector(".scene");
+
+
+    for (let i = 0; i < 12; i++) {
+
+
+        const sparkle =
+        document.createElement("div");
+
+
+        sparkle.className =
+        "sparkle";
+
+
+        sparkle.style.left =
+        Math.random() * 100 + "%";
+
+
+        sparkle.style.top =
+        Math.random() * 100 + "%";
+
+
+        sparkleContainer.appendChild(sparkle);
 
 
     }
@@ -195,21 +236,12 @@ updateItalyClock();
 
 updateItalyMood();
 
+createFloatingSparkles();
 
 
-setInterval(
-    updateCountdown,
-    1000
-);
 
+setInterval(updateCountdown,1000);
 
-setInterval(
-    updateItalyClock,
-    1000
-);
+setInterval(updateItalyClock,1000);
 
-
-setInterval(
-    updateItalyMood,
-    60000
-);
+setInterval(updateItalyMood,60000);
