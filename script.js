@@ -25,20 +25,17 @@ function updateCountdown() {
         distance / (1000 * 60 * 60 * 24)
     );
 
-
     const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24))
         /
         (1000 * 60 * 60)
     );
 
-
     const minutes = Math.floor(
         (distance % (1000 * 60 * 60))
         /
         (1000 * 60)
     );
-
 
     const seconds = Math.floor(
         (distance % (1000 * 60))
@@ -49,7 +46,6 @@ function updateCountdown() {
 
 
     document.getElementById("countdown").innerHTML =
-
     `${days} Days<br>
     ${hours} Hours<br>
     ${minutes} Minutes<br>
@@ -67,17 +63,11 @@ function updateItalyClock() {
     const italyTime = new Intl.DateTimeFormat(
         "en-GB",
         {
-
-            timeZone: "Europe/Rome",
-
-            hour: "2-digit",
-
-            minute: "2-digit",
-
-            second: "2-digit",
-
-            hour12: false
-
+            timeZone:"Europe/Rome",
+            hour:"2-digit",
+            minute:"2-digit",
+            second:"2-digit",
+            hour12:false
         }
 
     ).format(new Date());
@@ -87,8 +77,8 @@ function updateItalyClock() {
     document.getElementById("italyClock").innerHTML =
     italyTime;
 
-
 }
+
 
 
 
@@ -104,13 +94,9 @@ function updateItalyMood() {
             "en-GB",
 
             {
-
                 timeZone:"Europe/Rome",
-
                 hour:"numeric",
-
                 hour12:false
-
             }
 
         ).format(new Date())
@@ -119,9 +105,12 @@ function updateItalyMood() {
 
 
 
-    const scene = document.getElementById("scene");
+    const scene =
+    document.getElementById("scene");
 
-    const mood = document.getElementById("italyMood");
+
+    const mood =
+    document.getElementById("italyMood");
 
 
 
@@ -185,21 +174,20 @@ function updateItalyMood() {
 
     }
 
-
 }
 
 
 
 
 
-function createFloatingSparkles() {
+function createSparkles() {
 
 
-    const sparkleContainer =
-    document.querySelector(".scene");
+    const scene =
+    document.getElementById("scene");
 
 
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 15; i++) {
 
 
         const sparkle =
@@ -218,11 +206,13 @@ function createFloatingSparkles() {
         Math.random() * 100 + "%";
 
 
-        sparkleContainer.appendChild(sparkle);
+        sparkle.style.animationDelay =
+        Math.random() * 5 + "s";
 
+
+        scene.appendChild(sparkle);
 
     }
-
 
 }
 
@@ -236,12 +226,24 @@ updateItalyClock();
 
 updateItalyMood();
 
-createFloatingSparkles();
+createSparkles();
 
 
 
-setInterval(updateCountdown,1000);
 
-setInterval(updateItalyClock,1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
-setInterval(updateItalyMood,60000);
+
+setInterval(
+    updateItalyClock,
+    1000
+);
+
+
+setInterval(
+    updateItalyMood,
+    60000
+);
