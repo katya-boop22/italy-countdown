@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scene {
+  height: 100vh;
+  background: linear-gradient(#f7cfa8, #5d8ca8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.85);
+  padding: 35px;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 320px;
+}
+
+h1 {
+  font-size: 38px;
+  color: #8b5a2b;
+}
+
+.subtitle {
+  font-size: 20px;
+}
+
+#countdown {
+  font-size: 28px;
+  margin: 25px 0;
+  color: #333;
+}
+
+.quote {
+  font-style: italic;
+}
