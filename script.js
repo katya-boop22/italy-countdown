@@ -1,13 +1,11 @@
 const tripDate = new Date("September 22, 2026 11:00:00").getTime();
 
 
-
 function updateCountdown() {
 
     const now = new Date().getTime();
 
     const distance = tripDate - now;
-
 
 
     if (distance <= 0) {
@@ -20,32 +18,27 @@ function updateCountdown() {
     }
 
 
-
     const days = Math.floor(
         distance / (1000 * 60 * 60 * 24)
     );
 
 
     const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        /
+        (distance % (1000 * 60 * 60 * 24)) /
         (1000 * 60 * 60)
     );
 
 
     const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        /
+        (distance % (1000 * 60 * 60)) /
         (1000 * 60)
     );
 
 
     const seconds = Math.floor(
-        (distance % (1000 * 60))
-        /
+        (distance % (1000 * 60)) /
         1000
     );
-
 
 
     document.getElementById("countdown").innerHTML =
@@ -77,7 +70,6 @@ function updateItalyClock() {
     ).format(new Date());
 
 
-
     document.getElementById("italyClock").innerHTML =
     italyTime;
 
@@ -93,9 +85,7 @@ function updateItalyMood() {
     const hour = Number(
 
         new Intl.DateTimeFormat(
-
             "en-GB",
-
             {
                 timeZone:"Europe/Rome",
                 hour:"numeric",
@@ -107,7 +97,6 @@ function updateItalyMood() {
     );
 
 
-
     const scene =
     document.getElementById("scene");
 
@@ -117,60 +106,46 @@ function updateItalyMood() {
 
 
 
-
-
     if (hour >= 6 && hour < 12) {
-
 
         scene.className =
         "scene morning";
 
-
         mood.innerHTML =
         "☀️ Buongiorno from Italy";
-
 
     }
 
 
     else if (hour >= 12 && hour < 18) {
 
-
         scene.className =
         "scene afternoon";
 
-
         mood.innerHTML =
         "🌿 A beautiful Italian afternoon";
-
 
     }
 
 
     else if (hour >= 18 && hour < 21) {
 
-
         scene.className =
         "scene sunset";
 
-
         mood.innerHTML =
         "🌅 Golden hour on the Amalfi Coast";
-
 
     }
 
 
     else {
 
-
         scene.className =
         "scene night";
 
-
         mood.innerHTML =
         "🌙 A peaceful Italian night";
-
 
     }
 
@@ -182,25 +157,20 @@ function updateItalyMood() {
 
 function updateArrivalMessage() {
 
-
     const now = new Date();
 
     const arrivalDate =
     new Date("September 22, 2026 11:00:00");
 
 
-
     const arrivalBox =
     document.querySelector(".arrival-card");
-
 
 
     if (now >= arrivalDate) {
 
 
-        arrivalBox.innerHTML =
-
-        `
+        arrivalBox.innerHTML = `
 
         <h2>
         🇮🇹 Benvenuti in Italia
@@ -222,9 +192,47 @@ function updateArrivalMessage() {
 
         `;
 
-
     }
 
+}
+
+
+
+
+
+function createSparkles() {
+
+
+    const scene =
+    document.getElementById("scene");
+
+
+    for (let i = 0; i < 15; i++) {
+
+
+        const sparkle =
+        document.createElement("div");
+
+
+        sparkle.className =
+        "sparkle";
+
+
+        sparkle.style.left =
+        Math.random() * 100 + "%";
+
+
+        sparkle.style.top =
+        Math.random() * 100 + "%";
+
+
+        sparkle.style.animationDelay =
+        Math.random() * 5 + "s";
+
+
+        scene.appendChild(sparkle);
+
+    }
 
 }
 
@@ -240,28 +248,15 @@ updateItalyMood();
 
 updateArrivalMessage();
 
+createSparkles();
 
 
 
-setInterval(
-    updateCountdown,
-    1000
-);
 
+setInterval(updateCountdown, 1000);
 
-setInterval(
-    updateItalyClock,
-    1000
-);
+setInterval(updateItalyClock, 1000);
 
+setInterval(updateItalyMood, 60000);
 
-setInterval(
-    updateItalyMood,
-    60000
-);
-
-
-setInterval(
-    updateArrivalMessage,
-    60000
-);
+setInterval(updateArrivalMessage, 60000);
