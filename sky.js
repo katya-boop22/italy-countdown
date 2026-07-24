@@ -1,6 +1,6 @@
 /* =========================================================
    LA DOLCE ATTESA
-   Complete sky.js
+   Complete sky.js — Version 2.2
    ========================================================= */
 
 "use strict";
@@ -23,26 +23,81 @@ function getSkyItalyHour(date = new Date()) {
   return Number(formatter.format(date));
 }
 
-/* ---------- Sky message ---------- */
+/* ---------- Atmosphere messages ---------- */
 
-function getSkyMessage(hour) {
+const skyMessages = {
+  sunrise: [
+    "🌅 Sunrise in Italy • The coast is waking softly",
+    "🌅 Dawn in Italy • Golden light touches the cliffs",
+    "☕ Early morning in Italy • The cafés are beginning to stir",
+    "🌊 Sunrise on the coast • The Mediterranean is glowing"
+  ],
+
+  morning: [
+    "☀️ Morning in Italy • Lemon trees glowing 🍋",
+    "☕ Morning in Italy • Café terraces are opening",
+    "🍋 Morning on the coast • Lemon blossoms scent the air",
+    "🌿 Buongiorno from Italy • Gardens shimmer in the sunlight",
+    "🌊 Morning in Amalfi • The sea is bright and peaceful"
+  ],
+
+  afternoon: [
+    "🌿 Afternoon in Italy • Amalfi waters sparkling 🌊",
+    "☀️ Afternoon on the coast • The sea shines turquoise",
+    "🍋 Italian afternoon • Sunlight dances through the lemon trees",
+    "🌊 Afternoon in Italy • Boats drift across the Mediterranean",
+    "🌸 The coast is blooming beneath the Italian sun"
+  ],
+
+  evening: [
+    "🌅 Golden hour in Italy • The coast is glowing",
+    "🌇 Evening in Italy • The cliffs are turning amber",
+    "🍷 Italian evening • Café lights begin to glow",
+    "🌊 Sunset on the coast • The sea reflects the sky",
+    "🌸 Buonasera from Italy • Warm light fills the gardens"
+  ],
+
+  night: [
+    "🌙 Night in Italy • Stars over the Mediterranean ✨",
+    "✨ Italian night • The coastline is glowing softly",
+    "🌊 Night on the coast • Moonlight shimmers on the sea",
+    "🌙 Buonanotte from Italy • The villages sparkle below",
+    "⭐ The Mediterranean rests beneath a sky full of stars"
+  ]
+};
+
+/* ---------- Message selection ---------- */
+
+function getTimePeriod(hour) {
   if (hour >= 5 && hour < 8) {
-    return "🌅 Sunrise in Italy • The coast is waking softly";
+    return "sunrise";
   }
 
   if (hour >= 8 && hour < 12) {
-    return "☀️ Morning in Italy • Lemon trees glowing 🍋";
+    return "morning";
   }
 
   if (hour >= 12 && hour < 18) {
-    return "🌿 Afternoon in Italy • Amalfi waters sparkling 🌊";
+    return "afternoon";
   }
 
   if (hour >= 18 && hour < 21) {
-    return "🌅 Golden hour in Italy • The coast is glowing";
+    return "evening";
   }
 
-  return "🌙 Night in Italy • Stars over the Mediterranean ✨";
+  return "night";
+}
+
+function getRotatingMessage(period) {
+  const messages = skyMessages[period];
+
+  if (!messages || messages.length === 0) {
+    return "Italy is waiting for you 🇮🇹";
+  }
+
+  const rotationNumber = Math.floor(Date.now() / 300000);
+
+  return messages[rotationNumber % messages.length];
 }
 
 function updateSkyDetails() {
@@ -51,8 +106,9 @@ function updateSkyDetails() {
   }
 
   const italyHour = getSkyItalyHour();
+  const period = getTimePeriod(italyHour);
 
-  skyDetails.textContent = getSkyMessage(italyHour);
+  skyDetails.textContent = getRotatingMessage(period);
 }
 
 /* ---------- Fireflies ---------- */
@@ -62,7 +118,8 @@ function createFireflies() {
     return;
   }
 
-  const existingFireflies = skyScene.querySelectorAll(".firefly");
+  const existingFireflies =
+    skyScene.querySelectorAll(".firefly");
 
   if (existingFireflies.length > 0) {
     return;
@@ -70,7 +127,11 @@ function createFireflies() {
 
   const fragment = document.createDocumentFragment();
 
-  for (let index = 0; index < FIREFLY_COUNT; index += 1) {
+  for (
+    let index = 0;
+    index < FIREFLY_COUNT;
+    index += 1
+  ) {
     const firefly = document.createElement("span");
 
     firefly.className = "firefly";
@@ -100,7 +161,7 @@ function createFireflies() {
   skyScene.appendChild(fragment);
 }
 
-/* ---------- Gentle banner refresh ---------- */
+/* ---------- Refresh ---------- */
 
 function refreshSky() {
   updateSkyDetails();
