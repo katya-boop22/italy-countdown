@@ -1006,7 +1006,75 @@ h1 {
     letter-spacing: 0.8px;
   }
 }
+/* ---------- Sky details ---------- */
 
+.sky-details {
+  position: fixed;
+  top: max(70px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+
+  padding: 12px 22px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,.35);
+
+  color: #fffdf7;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px,2vw,24px);
+  text-align: center;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
+
+/* ---------- Fireflies ---------- */
+
+.firefly{
+  position:fixed;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#fff6a0;
+  box-shadow:
+    0 0 8px #fff7b3,
+    0 0 18px #ffe86a;
+  opacity:0;
+  pointer-events:none;
+  z-index:2;
+  animation:fireflyFloat 6s ease-in-out infinite;
+}
+
+.scene-night .firefly{
+  opacity:1;
+}
+
+@keyframes fireflyFloat{
+
+  0%{
+    transform:translate(0,0) scale(.8);
+  }
+
+  25%{
+    transform:translate(15px,-20px) scale(1);
+  }
+
+  50%{
+    transform:translate(-10px,-35px) scale(.7);
+  }
+
+  75%{
+    transform:translate(12px,-15px) scale(1);
+  }
+
+  100%{
+    transform:translate(0,0) scale(.8);
+  }
+
+}
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
