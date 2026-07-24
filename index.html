@@ -14,6 +14,11 @@
     content="#23475a"
   >
 
+  <meta
+    name="description"
+    content="A magical countdown to Jipka and Zlo’s Italian adventure."
+  >
+
   <title>La Dolce Attesa 🇮🇹</title>
 
   <link
@@ -30,6 +35,11 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet"
+  >
+
+  <link
+    rel="manifest"
+    href="manifest.json"
   >
 
   <link
@@ -66,6 +76,15 @@
     ></div>
 
     <div
+      class="clouds"
+      aria-hidden="true"
+    >
+      <span class="cloud cloud-one">☁️</span>
+      <span class="cloud cloud-two">☁️</span>
+      <span class="cloud cloud-three">☁️</span>
+    </div>
+
+    <div
       class="sea-shimmer"
       aria-hidden="true"
     ></div>
@@ -85,7 +104,9 @@
     >
       <span>🌸</span>
       <span>🌸</span>
+      <span>🌺</span>
       <span>🌸</span>
+      <span>🌺</span>
       <span>🌸</span>
     </div>
 
@@ -97,6 +118,7 @@
       <span class="lemon">🍋</span>
       <span class="leaf">🌿</span>
       <span class="lemon">🍋</span>
+      <span class="leaf">🌿</span>
     </div>
 
     <div
@@ -117,12 +139,21 @@
       🍋 🌸 🌿
     </div>
 
+    <div
+      class="sky-details"
+      id="skyDetails"
+      aria-live="polite"
+    >
+      Italy is waiting for you 🇮🇹
+    </div>
+
     <section
       class="card"
       aria-label="Italy trip countdown"
     >
 
       <div class="greeting">
+
         <span id="italyGreeting">
           Buongiorno, Jipka
         </span>
@@ -133,6 +164,7 @@
         >
           ☀️
         </span>
+
       </div>
 
       <h1>
@@ -232,7 +264,7 @@
   </main>
 
   <script src="script.js"></script>
-<script src="sky.js"></script>
+  <script src="sky.js"></script>
 
 </body>
 
