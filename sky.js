@@ -1,138 +1,122 @@
-const scene = document.getElementById("scene");
+/* =========================================================
+   LA DOLCE ATTESA
+   Complete sky.js
+   ========================================================= */
 
+"use strict";
 
-const skyDetails = document.createElement("div");
+const skyScene = document.getElementById("scene");
+const skyDetails = document.getElementById("skyDetails");
 
-skyDetails.className = "sky-details";
+const SKY_TIME_ZONE = "Europe/Rome";
+const FIREFLY_COUNT = 18;
 
-scene.appendChild(skyDetails);
+/* ---------- Italy time ---------- */
 
+function getSkyItalyHour(date = new Date()) {
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: SKY_TIME_ZONE,
+    hour: "numeric",
+    hourCycle: "h23"
+  });
 
+  return Number(formatter.format(date));
+}
 
+/* ---------- Sky message ---------- */
 
+function getSkyMessage(hour) {
+  if (hour >= 5 && hour < 8) {
+    return "🌅 Sunrise in Italy • The coast is waking softly";
+  }
+
+  if (hour >= 8 && hour < 12) {
+    return "☀️ Morning in Italy • Lemon trees glowing 🍋";
+  }
+
+  if (hour >= 12 && hour < 18) {
+    return "🌿 Afternoon in Italy • Amalfi waters sparkling 🌊";
+  }
+
+  if (hour >= 18 && hour < 21) {
+    return "🌅 Golden hour in Italy • The coast is glowing";
+  }
+
+  return "🌙 Night in Italy • Stars over the Mediterranean ✨";
+}
 
 function updateSkyDetails() {
+  if (!skyDetails) {
+    return;
+  }
 
+  const italyHour = getSkyItalyHour();
 
-    const hour = Number(
-
-        new Intl.DateTimeFormat(
-
-            "en-GB",
-            {
-                timeZone:"Europe/Rome",
-                hour:"numeric",
-                hour12:false
-            }
-
-        ).format(new Date())
-
-    );
-
-
-
-
-
-    if (hour >= 6 && hour < 12) {
-
-
-        skyDetails.innerHTML =
-        "☀️ Morning in Italy • Lemon trees glowing 🍋";
-
-
-    }
-
-
-
-    else if (hour >= 12 && hour < 18) {
-
-
-        skyDetails.innerHTML =
-        "🌿 Afternoon in Italy • Amalfi waters sparkling 🌊";
-
-
-    }
-
-
-
-    else if (hour >= 18 && hour < 21) {
-
-
-        skyDetails.innerHTML =
-        "🌅 Golden hour in Italy • Memories waiting ✨";
-
-
-    }
-
-
-
-    else {
-
-
-        skyDetails.innerHTML =
-        "🌙 Italian night • Stars over the Mediterranean";
-
-
-    }
-
-
+  skyDetails.textContent = getSkyMessage(italyHour);
 }
 
-
-
-
+/* ---------- Fireflies ---------- */
 
 function createFireflies() {
+  if (!skyScene) {
+    return;
+  }
 
+  const existingFireflies = skyScene.querySelectorAll(".firefly");
 
-    for (let i = 0; i < 20; i++) {
+  if (existingFireflies.length > 0) {
+    return;
+  }
 
+  const fragment = document.createDocumentFragment();
 
-        const firefly =
-        document.createElement("div");
+  for (let index = 0; index < FIREFLY_COUNT; index += 1) {
+    const firefly = document.createElement("span");
 
+    firefly.className = "firefly";
+    firefly.setAttribute("aria-hidden", "true");
 
+    const left = 6 + Math.random() * 88;
+    const top = 30 + Math.random() * 62;
+    const delay = Math.random() * -8;
+    const duration = 5.5 + Math.random() * 5;
+    const blinkDuration = 1.9 + Math.random() * 2.8;
+    const size = 3 + Math.random() * 4;
 
-        firefly.className =
-        "firefly";
+    firefly.style.left = `${left}%`;
+    firefly.style.top = `${top}%`;
+    firefly.style.width = `${size}px`;
+    firefly.style.height = `${size}px`;
 
+    firefly.style.animationDelay =
+      `${delay}s, ${delay / 2}s`;
 
+    firefly.style.animationDuration =
+      `${duration}s, ${blinkDuration}s`;
 
-        firefly.style.left =
-        Math.random() * 100 + "%";
+    fragment.appendChild(firefly);
+  }
 
-
-
-        firefly.style.top =
-        Math.random() * 100 + "%";
-
-
-
-        firefly.style.animationDelay =
-        Math.random() * 6 + "s";
-
-
-
-        scene.appendChild(firefly);
-
-
-    }
-
-
+  skyScene.appendChild(fragment);
 }
 
+/* ---------- Gentle banner refresh ---------- */
 
+function refreshSky() {
+  updateSkyDetails();
+}
 
-
-
-updateSkyDetails();
+/* ---------- Start ---------- */
 
 createFireflies();
+refreshSky();
 
+window.setInterval(refreshSky, 60000);
 
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    refreshSky();
+  }
+});
 
-
-setInterval(
-    updateSkyDetails,
-    60000
-);
+window.addEventListener("focus", refreshSky);
