@@ -1,6 +1,6 @@
 /* =========================================================
    LA DOLCE ATTESA
-   Complete style.css
+   Complete style.css — Version 2.2
    ========================================================= */
 
 *,
@@ -54,7 +54,7 @@ svg {
   align-items: center;
   justify-content: center;
   padding:
-    max(118px, env(safe-area-inset-top))
+    max(82px, env(safe-area-inset-top))
     clamp(14px, 3vw, 30px)
     max(58px, env(safe-area-inset-bottom));
   overflow: hidden;
@@ -182,7 +182,7 @@ svg {
       transparent
     );
   background-size: 100% 240%;
-  animation: seaMove 8s linear infinite;
+  animation: seaMove 10s linear infinite;
 }
 
 /* ---------- Clouds ---------- */
@@ -207,7 +207,7 @@ svg {
   top: 13%;
   left: -20%;
   font-size: clamp(50px, 9vw, 100px);
-  animation-duration: 46s;
+  animation-duration: 52s;
 }
 
 .cloud-two {
@@ -215,7 +215,7 @@ svg {
   left: -32%;
   font-size: clamp(38px, 7vw, 78px);
   opacity: 0.12;
-  animation-duration: 58s;
+  animation-duration: 64s;
   animation-delay: -19s;
 }
 
@@ -224,7 +224,7 @@ svg {
   left: -26%;
   font-size: clamp(32px, 6vw, 67px);
   opacity: 0.1;
-  animation-duration: 67s;
+  animation-duration: 72s;
   animation-delay: -33s;
 }
 
@@ -241,7 +241,7 @@ svg {
   pointer-events: none;
   opacity: 0.2;
   font-size: 26px;
-  animation: birdsFly 26s linear infinite;
+  animation: birdsFly 30s linear infinite;
 }
 
 .floating-petals {
@@ -256,43 +256,43 @@ svg {
   position: absolute;
   top: -10vh;
   font-size: 20px;
-  opacity: 0.46;
+  opacity: 0.4;
   animation: petalFall linear infinite;
 }
 
 .floating-petals span:nth-child(1) {
   left: 13%;
-  animation-duration: 13s;
+  animation-duration: 15s;
   animation-delay: -2s;
 }
 
 .floating-petals span:nth-child(2) {
   left: 31%;
-  animation-duration: 17s;
+  animation-duration: 19s;
   animation-delay: -8s;
 }
 
 .floating-petals span:nth-child(3) {
   left: 49%;
-  animation-duration: 15s;
+  animation-duration: 17s;
   animation-delay: -5s;
 }
 
 .floating-petals span:nth-child(4) {
   left: 68%;
-  animation-duration: 18s;
+  animation-duration: 20s;
   animation-delay: -11s;
 }
 
 .floating-petals span:nth-child(5) {
   left: 82%;
-  animation-duration: 14s;
+  animation-duration: 16s;
   animation-delay: -6s;
 }
 
 .floating-petals span:nth-child(6) {
   left: 93%;
-  animation-duration: 20s;
+  animation-duration: 22s;
   animation-delay: -14s;
 }
 
@@ -372,61 +372,6 @@ svg {
   transform: translateX(-4px) rotate(-10deg);
 }
 
-/* ---------- Sky details banner ---------- */
-
-.sky-details {
-  position: fixed;
-  top: max(72px, calc(env(safe-area-inset-top) + 58px));
-  left: 50%;
-  z-index: 12;
-  width: max-content;
-  max-width: calc(100vw - 28px);
-  padding: 10px 18px;
-  color: rgba(255, 253, 244, 0.95);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(15px, 2.6vw, 22px);
-  font-weight: 600;
-  line-height: 1.3;
-  text-align: center;
-  overflow-wrap: anywhere;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 999px;
-  background: rgba(19, 47, 57, 0.27);
-  -webkit-backdrop-filter: blur(13px) saturate(125%);
-  backdrop-filter: blur(13px) saturate(125%);
-  box-shadow:
-    0 12px 30px rgba(5, 20, 27, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transform: translateX(-50%);
-  text-shadow: 0 2px 12px rgba(5, 20, 26, 0.42);
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
-}
-
-/* ---------- Fireflies ---------- */
-
-.firefly {
-  position: fixed;
-  z-index: 3;
-  width: 5px;
-  height: 5px;
-  pointer-events: none;
-  border-radius: 50%;
-  background: #fff5a6;
-  box-shadow:
-    0 0 7px rgba(255, 248, 159, 0.95),
-    0 0 16px rgba(255, 225, 89, 0.72);
-  opacity: 0;
-  animation:
-    fireflyFloat 7s ease-in-out infinite,
-    fireflyBlink 2.8s ease-in-out infinite;
-}
-
-.scene-night .firefly {
-  opacity: 0.9;
-}
-
 /* ---------- Main glass card ---------- */
 
 .card {
@@ -436,7 +381,7 @@ svg {
   max-width: 100%;
   margin: 0 auto;
   padding:
-    clamp(36px, 5vw, 52px)
+    clamp(25px, 4vw, 38px)
     clamp(22px, 5vw, 48px)
     clamp(32px, 4.5vw, 42px);
   overflow: hidden;
@@ -487,12 +432,47 @@ svg {
   filter: blur(24px);
 }
 
+/* ---------- Italy atmosphere banner ---------- */
+
+.sky-details {
+  position: relative;
+  z-index: 2;
+  width: min(680px, 100%);
+  max-width: 100%;
+  margin: 0 auto 18px;
+  padding: 11px 18px;
+  color: rgba(255, 253, 244, 0.96);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(16px, 2.7vw, 22px);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(23, 59, 69, 0.32),
+      rgba(255, 255, 255, 0.1)
+    );
+  -webkit-backdrop-filter: blur(13px) saturate(125%);
+  backdrop-filter: blur(13px) saturate(125%);
+  box-shadow:
+    0 12px 30px rgba(5, 20, 27, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  text-shadow: 0 2px 12px rgba(5, 20, 26, 0.42);
+  transition:
+    opacity 0.4s ease,
+    background 1.2s ease;
+}
+
 /* ---------- Heading and greeting ---------- */
 
 .greeting {
   width: min(580px, 100%);
   max-width: 100%;
-  margin: 0 auto 20px;
+  margin: 0 auto 22px;
   padding: 14px 16px;
   display: flex;
   align-items: center;
@@ -543,7 +523,7 @@ h1 {
 
 .subtitle {
   max-width: 100%;
-  margin: 12px 0 30px;
+  margin: 13px 0 30px;
   color: rgba(255, 252, 240, 0.93);
   font-size: clamp(12px, 2.5vw, 18px);
   font-weight: 400;
@@ -640,7 +620,6 @@ h1 {
   text-shadow:
     0 4px 18px rgba(8, 25, 32, 0.42),
     0 1px 0 rgba(255, 255, 255, 0.2);
-  animation: numberPulse 1s ease-in-out infinite;
 }
 
 .label {
@@ -807,6 +786,29 @@ h1 {
   overflow-wrap: anywhere;
 }
 
+/* ---------- Fireflies ---------- */
+
+.firefly {
+  position: fixed;
+  z-index: 3;
+  width: 5px;
+  height: 5px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: #fff5a6;
+  box-shadow:
+    0 0 7px rgba(255, 248, 159, 0.95),
+    0 0 16px rgba(255, 225, 89, 0.72);
+  opacity: 0;
+  animation:
+    fireflyFloat 7s ease-in-out infinite,
+    fireflyBlink 2.8s ease-in-out infinite;
+}
+
+.scene-night .firefly {
+  opacity: 0.9;
+}
+
 /* ---------- Time-of-day themes ---------- */
 
 .scene-morning {
@@ -878,6 +880,24 @@ h1 {
       180deg,
       rgba(7, 23, 41, 0.36),
       rgba(3, 15, 27, 0.69)
+    );
+}
+
+.scene-evening .sky-details {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(111, 58, 54, 0.31),
+      rgba(255, 184, 127, 0.14)
+    );
+}
+
+.scene-night .sky-details {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(11, 35, 65, 0.4),
+      rgba(120, 143, 188, 0.12)
     );
 }
 
@@ -1055,24 +1075,13 @@ h1 {
   }
 }
 
-@keyframes numberPulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.015);
-  }
-}
-
 /* ---------- Tablet and phones ---------- */
 
 @media (max-width: 768px) {
   .scene {
     align-items: flex-start;
     padding:
-      max(122px, env(safe-area-inset-top))
+      max(76px, calc(env(safe-area-inset-top) + 55px))
       3px
       max(38px, env(safe-area-inset-bottom));
     background-attachment: scroll;
@@ -1087,20 +1096,20 @@ h1 {
     letter-spacing: 3px;
   }
 
-  .sky-details {
-    top: max(66px, calc(env(safe-area-inset-top) + 55px));
-    width: calc(100vw - 22px);
-    max-width: calc(100vw - 22px);
-    padding: 9px 13px;
-    border-radius: 18px;
-    font-size: clamp(14px, 4.5vw, 18px);
-  }
-
   .card {
     width: calc(100vw - 6px);
     max-width: calc(100vw - 6px);
-    padding: 34px 14px 29px;
+    padding: 24px 14px 29px;
     border-radius: 28px;
+  }
+
+  .sky-details {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+    padding: 10px 13px;
+    border-radius: 17px;
+    font-size: clamp(15px, 4.4vw, 18px);
   }
 
   h1 {
@@ -1112,7 +1121,7 @@ h1 {
   }
 
   .greeting {
-    margin-bottom: 17px;
+    margin-bottom: 19px;
     padding: 12px;
     border-radius: 17px;
     font-size: clamp(19px, 6vw, 26px);
@@ -1171,8 +1180,16 @@ h1 {
   .card {
     width: calc(100vw - 4px);
     max-width: calc(100vw - 4px);
-    padding-left: 12px;
-    padding-right: 12px;
+    padding: 20px 12px 29px;
+  }
+
+  .sky-details {
+    margin-bottom: 14px;
+    padding: 10px 10px;
+  }
+
+  .greeting {
+    margin-bottom: 18px;
   }
 
   .countdown-card {
@@ -1253,8 +1270,7 @@ h1 {
   .sky-birds,
   .cloud,
   .firefly,
-  .floating-petals span,
-  .number {
+  .floating-petals span {
     animation: none;
   }
 }
