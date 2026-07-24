@@ -54,14 +54,14 @@ svg {
   align-items: center;
   justify-content: center;
   padding:
-    max(68px, env(safe-area-inset-top))
+    max(118px, env(safe-area-inset-top))
     clamp(14px, 3vw, 30px)
     max(58px, env(safe-area-inset-bottom));
   overflow: hidden;
   background-image:
     linear-gradient(
       180deg,
-      rgba(11, 30, 40, 0.10) 0%,
+      rgba(11, 30, 40, 0.1) 0%,
       rgba(18, 42, 50, 0.18) 42%,
       rgba(12, 25, 31, 0.52) 100%
     ),
@@ -69,20 +69,36 @@ svg {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition:
+    background-position 1.4s ease,
+    filter 1.4s ease;
 }
 
 .background-overlay {
   position: fixed;
   inset: 0;
-  z-index: -4;
+  z-index: -5;
   pointer-events: none;
   background:
-    radial-gradient(circle at 16% 8%, rgba(255, 236, 180, 0.45), transparent 34%),
-    radial-gradient(circle at 88% 18%, rgba(255, 170, 139, 0.20), transparent 30%),
-    linear-gradient(180deg, rgba(255, 249, 225, 0.06), rgba(8, 25, 31, 0.24));
+    radial-gradient(
+      circle at 16% 8%,
+      rgba(255, 236, 180, 0.45),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(255, 170, 139, 0.2),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 249, 225, 0.06),
+      rgba(8, 25, 31, 0.24)
+    );
+  transition: background 1.5s ease;
 }
 
-/* ---------- Light, stars, moon and sea ---------- */
+/* ---------- Sun, moon, stars and sea ---------- */
 
 .sun-glow,
 .moon-glow {
@@ -95,24 +111,25 @@ svg {
 .sun-glow {
   top: -110px;
   left: -90px;
-  z-index: -3;
+  z-index: -4;
   width: min(440px, 82vw);
   aspect-ratio: 1;
   background:
     radial-gradient(
       circle,
-      rgba(255, 238, 182, 0.50) 0%,
+      rgba(255, 238, 182, 0.5) 0%,
       rgba(255, 213, 145, 0.23) 32%,
       rgba(255, 195, 132, 0.07) 58%,
       transparent 74%
     );
   animation: sunlightBreathe 8s ease-in-out infinite;
+  transition: opacity 1.5s ease;
 }
 
 .moon-glow {
   top: -80px;
   right: -70px;
-  z-index: -3;
+  z-index: -4;
   width: 320px;
   height: 320px;
   opacity: 0;
@@ -120,7 +137,7 @@ svg {
     radial-gradient(
       circle,
       rgba(215, 230, 255, 0.55) 0%,
-      rgba(170, 205, 255, 0.20) 45%,
+      rgba(170, 205, 255, 0.2) 45%,
       transparent 72%
     );
   transition: opacity 1.6s ease;
@@ -129,18 +146,22 @@ svg {
 .stars {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
   pointer-events: none;
-  opacity: 0.16;
+  opacity: 0.15;
   background-image:
-    radial-gradient(circle at 13% 20%, rgba(255, 255, 255, 0.78) 0 1px, transparent 2px),
-    radial-gradient(circle at 82% 16%, rgba(255, 246, 204, 0.72) 0 1px, transparent 2px),
-    radial-gradient(circle at 74% 72%, rgba(255, 255, 255, 0.54) 0 1px, transparent 2px),
-    radial-gradient(circle at 22% 77%, rgba(255, 248, 220, 0.62) 0 1px, transparent 2px),
-    radial-gradient(circle at 51% 38%, rgba(255, 255, 255, 0.44) 0 1px, transparent 2px),
-    radial-gradient(circle at 36% 12%, rgba(255, 255, 255, 0.60) 0 1px, transparent 2px),
-    radial-gradient(circle at 91% 44%, rgba(255, 250, 224, 0.46) 0 1px, transparent 2px);
+    radial-gradient(circle at 13% 20%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 16%, #fff6cc 0 1px, transparent 2px),
+    radial-gradient(circle at 74% 72%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 22% 77%, #fff8dc 0 1px, transparent 2px),
+    radial-gradient(circle at 51% 38%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 36% 12%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 91% 44%, #fffae0 0 1px, transparent 2px),
+    radial-gradient(circle at 64% 9%, #ffffff 0 1px, transparent 2px),
+    radial-gradient(circle at 7% 54%, #fff8dc 0 1px, transparent 2px),
+    radial-gradient(circle at 47% 83%, #ffffff 0 1px, transparent 2px);
   animation: starsGlow 5s ease-in-out infinite;
+  transition: opacity 1.5s ease;
 }
 
 .sea-shimmer {
@@ -149,19 +170,62 @@ svg {
   right: 0;
   bottom: 0;
   z-index: 0;
-  height: 27%;
+  height: 29%;
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0.25;
   background:
     linear-gradient(
       180deg,
       transparent,
       rgba(255, 255, 255, 0.05),
-      rgba(255, 244, 196, 0.13),
+      rgba(255, 244, 196, 0.16),
       transparent
     );
   background-size: 100% 240%;
   animation: seaMove 8s linear infinite;
+}
+
+/* ---------- Clouds ---------- */
+
+.clouds {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  display: block;
+  opacity: 0.18;
+  filter: blur(0.5px);
+  animation: cloudDrift linear infinite;
+}
+
+.cloud-one {
+  top: 13%;
+  left: -20%;
+  font-size: clamp(50px, 9vw, 100px);
+  animation-duration: 46s;
+}
+
+.cloud-two {
+  top: 29%;
+  left: -32%;
+  font-size: clamp(38px, 7vw, 78px);
+  opacity: 0.12;
+  animation-duration: 58s;
+  animation-delay: -19s;
+}
+
+.cloud-three {
+  top: 7%;
+  left: -26%;
+  font-size: clamp(32px, 6vw, 67px);
+  opacity: 0.1;
+  animation-duration: 67s;
+  animation-delay: -33s;
 }
 
 /* ---------- Birds and petals ---------- */
@@ -175,7 +239,7 @@ svg {
   display: flex;
   justify-content: space-around;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.2;
   font-size: 26px;
   animation: birdsFly 26s linear infinite;
 }
@@ -190,34 +254,46 @@ svg {
 
 .floating-petals span {
   position: absolute;
-  top: -8vh;
+  top: -10vh;
   font-size: 20px;
-  opacity: 0.48;
+  opacity: 0.46;
   animation: petalFall linear infinite;
 }
 
 .floating-petals span:nth-child(1) {
-  left: 18%;
+  left: 13%;
   animation-duration: 13s;
   animation-delay: -2s;
 }
 
 .floating-petals span:nth-child(2) {
-  left: 41%;
-  animation-duration: 15s;
+  left: 31%;
+  animation-duration: 17s;
   animation-delay: -8s;
 }
 
 .floating-petals span:nth-child(3) {
-  left: 72%;
-  animation-duration: 14s;
+  left: 49%;
+  animation-duration: 15s;
   animation-delay: -5s;
 }
 
 .floating-petals span:nth-child(4) {
-  left: 90%;
-  animation-duration: 16s;
-  animation-delay: -10s;
+  left: 68%;
+  animation-duration: 18s;
+  animation-delay: -11s;
+}
+
+.floating-petals span:nth-child(5) {
+  left: 82%;
+  animation-duration: 14s;
+  animation-delay: -6s;
+}
+
+.floating-petals span:nth-child(6) {
+  left: 93%;
+  animation-duration: 20s;
+  animation-delay: -14s;
 }
 
 /* ---------- Decorative framing ---------- */
@@ -226,7 +302,7 @@ svg {
   position: fixed;
   top: max(14px, env(safe-area-inset-top));
   left: max(14px, env(safe-area-inset-left));
-  z-index: 8;
+  z-index: 10;
   max-width: calc(100vw - 28px);
   padding: 9px 15px;
   font-size: clamp(24px, 4vw, 40px);
@@ -255,14 +331,14 @@ svg {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  filter: drop-shadow(0 12px 18px rgba(8, 25, 31, 0.20));
+  filter: drop-shadow(0 12px 18px rgba(8, 25, 31, 0.2));
 }
 
 .lemon-branch {
   top: 9%;
   right: -28px;
   width: 150px;
-  height: 260px;
+  height: 280px;
   font-size: 58px;
   opacity: 0.92;
   transform: rotate(9deg);
@@ -296,15 +372,73 @@ svg {
   transform: translateX(-4px) rotate(-10deg);
 }
 
+/* ---------- Sky details banner ---------- */
+
+.sky-details {
+  position: fixed;
+  top: max(72px, calc(env(safe-area-inset-top) + 58px));
+  left: 50%;
+  z-index: 12;
+  width: max-content;
+  max-width: calc(100vw - 28px);
+  padding: 10px 18px;
+  color: rgba(255, 253, 244, 0.95);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(15px, 2.6vw, 22px);
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(19, 47, 57, 0.27);
+  -webkit-backdrop-filter: blur(13px) saturate(125%);
+  backdrop-filter: blur(13px) saturate(125%);
+  box-shadow:
+    0 12px 30px rgba(5, 20, 27, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateX(-50%);
+  text-shadow: 0 2px 12px rgba(5, 20, 26, 0.42);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+/* ---------- Fireflies ---------- */
+
+.firefly {
+  position: fixed;
+  z-index: 3;
+  width: 5px;
+  height: 5px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: #fff5a6;
+  box-shadow:
+    0 0 7px rgba(255, 248, 159, 0.95),
+    0 0 16px rgba(255, 225, 89, 0.72);
+  opacity: 0;
+  animation:
+    fireflyFloat 7s ease-in-out infinite,
+    fireflyBlink 2.8s ease-in-out infinite;
+}
+
+.scene-night .firefly {
+  opacity: 0.9;
+}
+
 /* ---------- Main glass card ---------- */
 
 .card {
   position: relative;
-  z-index: 4;
+  z-index: 5;
   width: min(920px, 100%);
   max-width: 100%;
   margin: 0 auto;
-  padding: clamp(36px, 5vw, 52px) clamp(22px, 5vw, 48px) clamp(32px, 4.5vw, 42px);
+  padding:
+    clamp(36px, 5vw, 52px)
+    clamp(22px, 5vw, 48px)
+    clamp(32px, 4.5vw, 42px);
   overflow: hidden;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.44);
@@ -335,7 +469,7 @@ svg {
     linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.90),
+      rgba(255, 255, 255, 0.9),
       transparent
     );
 }
@@ -435,10 +569,10 @@ h1 {
     linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.22),
-      rgba(255, 248, 225, 0.10)
+      rgba(255, 248, 225, 0.1)
     );
   box-shadow:
-    0 17px 40px rgba(6, 21, 27, 0.20),
+    0 17px 40px rgba(6, 21, 27, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.34);
 }
 
@@ -458,7 +592,6 @@ h1 {
   width: 100%;
   max-width: 100%;
   color: #fffaf0;
-  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .time-grid {
@@ -506,7 +639,8 @@ h1 {
   white-space: nowrap;
   text-shadow:
     0 4px 18px rgba(8, 25, 32, 0.42),
-    0 1px 0 rgba(255, 255, 255, 0.20);
+    0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: numberPulse 1s ease-in-out infinite;
 }
 
 .label {
@@ -587,7 +721,7 @@ h1 {
   overflow-wrap: anywhere;
   text-shadow:
     0 3px 17px rgba(10, 27, 31, 0.48),
-    0 1px 0 rgba(255, 255, 255, 0.20);
+    0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .trip {
@@ -693,26 +827,58 @@ h1 {
 
 .scene-morning .background-overlay {
   background:
-    radial-gradient(circle at 15% 8%, rgba(255, 236, 181, 0.52), transparent 35%),
-    linear-gradient(180deg, rgba(255, 232, 182, 0.10), rgba(21, 48, 56, 0.23));
+    radial-gradient(
+      circle at 15% 8%,
+      rgba(255, 236, 181, 0.52),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 232, 182, 0.1),
+      rgba(21, 48, 56, 0.23)
+    );
 }
 
 .scene-day .background-overlay {
   background:
-    radial-gradient(circle at 17% 8%, rgba(255, 243, 191, 0.42), transparent 35%),
-    linear-gradient(180deg, rgba(255, 248, 219, 0.05), rgba(16, 42, 51, 0.18));
+    radial-gradient(
+      circle at 17% 8%,
+      rgba(255, 243, 191, 0.42),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 248, 219, 0.05),
+      rgba(16, 42, 51, 0.18)
+    );
 }
 
 .scene-evening .background-overlay {
   background:
-    radial-gradient(circle at 84% 13%, rgba(255, 172, 128, 0.38), transparent 34%),
-    linear-gradient(180deg, rgba(255, 180, 145, 0.11), rgba(19, 39, 49, 0.40));
+    radial-gradient(
+      circle at 84% 13%,
+      rgba(255, 172, 128, 0.38),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 180, 145, 0.11),
+      rgba(19, 39, 49, 0.4)
+    );
 }
 
 .scene-night .background-overlay {
   background:
-    radial-gradient(circle at 77% 8%, rgba(116, 150, 190, 0.16), transparent 32%),
-    linear-gradient(180deg, rgba(7, 23, 41, 0.36), rgba(3, 15, 27, 0.69));
+    radial-gradient(
+      circle at 77% 8%,
+      rgba(116, 150, 190, 0.16),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(7, 23, 41, 0.36),
+      rgba(3, 15, 27, 0.69)
+    );
 }
 
 .scene-night .moon-glow {
@@ -720,20 +886,28 @@ h1 {
 }
 
 .scene-night .sun-glow {
-  opacity: 0.12;
+  opacity: 0.08;
 }
 
 .scene-night .stars {
-  opacity: 0.92;
+  opacity: 0.94;
 }
 
 .scene-night .sky-birds {
   display: none;
 }
 
+.scene-night .cloud {
+  opacity: 0.07;
+}
+
+.scene-night .sea-shimmer {
+  opacity: 0.16;
+}
+
 .scene-morning .stars,
 .scene-day .stars {
-  opacity: 0.16;
+  opacity: 0.14;
 }
 
 /* ---------- Animations ---------- */
@@ -827,13 +1001,68 @@ h1 {
   }
 }
 
-@keyframes petalFall {
+@keyframes cloudDrift {
   0% {
-    transform: translateY(-8vh) rotate(0deg);
+    transform: translateX(0);
   }
 
   100% {
-    transform: translateY(116vh) rotate(360deg);
+    transform: translateX(145vw);
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+  }
+
+  45% {
+    transform: translateY(52vh) translateX(22px) rotate(190deg);
+  }
+
+  100% {
+    transform: translateY(116vh) translateX(-12px) rotate(370deg);
+  }
+}
+
+@keyframes fireflyFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(0.7);
+  }
+
+  25% {
+    transform: translate(15px, -20px) scale(1);
+  }
+
+  50% {
+    transform: translate(-10px, -35px) scale(0.75);
+  }
+
+  75% {
+    transform: translate(12px, -15px) scale(1.05);
+  }
+}
+
+@keyframes fireflyBlink {
+  0%,
+  100% {
+    filter: brightness(0.7);
+  }
+
+  50% {
+    filter: brightness(1.8);
+  }
+}
+
+@keyframes numberPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.015);
   }
 }
 
@@ -843,7 +1072,7 @@ h1 {
   .scene {
     align-items: flex-start;
     padding:
-      max(74px, env(safe-area-inset-top))
+      max(122px, env(safe-area-inset-top))
       3px
       max(38px, env(safe-area-inset-bottom));
     background-attachment: scroll;
@@ -856,6 +1085,15 @@ h1 {
     padding: 8px 12px;
     font-size: 27px;
     letter-spacing: 3px;
+  }
+
+  .sky-details {
+    top: max(66px, calc(env(safe-area-inset-top) + 55px));
+    width: calc(100vw - 22px);
+    max-width: calc(100vw - 22px);
+    padding: 9px 13px;
+    border-radius: 18px;
+    font-size: clamp(14px, 4.5vw, 18px);
   }
 
   .card {
@@ -977,11 +1215,6 @@ h1 {
 }
 
 @media (max-width: 360px) {
-  .scene {
-    padding-left: 2px;
-    padding-right: 2px;
-  }
-
   .card {
     padding-left: 10px;
     padding-right: 10px;
@@ -1006,75 +1239,7 @@ h1 {
     letter-spacing: 0.8px;
   }
 }
-/* ---------- Sky details ---------- */
 
-.sky-details {
-  position: fixed;
-  top: max(70px, env(safe-area-inset-top));
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-
-  padding: 12px 22px;
-  border-radius: 999px;
-
-  background: rgba(255,255,255,.18);
-  backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(255,255,255,.35);
-
-  color: #fffdf7;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(16px,2vw,24px);
-  text-align: center;
-
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
-}
-
-/* ---------- Fireflies ---------- */
-
-.firefly{
-  position:fixed;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#fff6a0;
-  box-shadow:
-    0 0 8px #fff7b3,
-    0 0 18px #ffe86a;
-  opacity:0;
-  pointer-events:none;
-  z-index:2;
-  animation:fireflyFloat 6s ease-in-out infinite;
-}
-
-.scene-night .firefly{
-  opacity:1;
-}
-
-@keyframes fireflyFloat{
-
-  0%{
-    transform:translate(0,0) scale(.8);
-  }
-
-  25%{
-    transform:translate(15px,-20px) scale(1);
-  }
-
-  50%{
-    transform:translate(-10px,-35px) scale(.7);
-  }
-
-  75%{
-    transform:translate(12px,-15px) scale(1);
-  }
-
-  100%{
-    transform:translate(0,0) scale(.8);
-  }
-
-}
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1086,11 +1251,10 @@ h1 {
   .bougainvillea,
   .sea-shimmer,
   .sky-birds,
-  .floating-petals span {
+  .cloud,
+  .firefly,
+  .floating-petals span,
+  .number {
     animation: none;
-  }
-
-  #countdown {
-    transition: none;
   }
 }
