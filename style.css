@@ -1274,3 +1274,68 @@ h1 {
     animation: none;
   }
 }
+/* =========================================================
+   BACKGROUND VISIBILITY UPGRADE
+   ========================================================= */
+
+.scene {
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(11, 30, 40, 0.02) 0%,
+      rgba(18, 42, 50, 0.06) 42%,
+      rgba(12, 25, 31, 0.22) 100%
+    ),
+    url("https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2200&q=95");
+  filter: saturate(1.12) contrast(1.04);
+}
+
+.background-overlay {
+  opacity: 0.52;
+}
+
+.card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.20),
+      rgba(255, 255, 255, 0.055)
+    );
+  -webkit-backdrop-filter: blur(15px) saturate(118%);
+  backdrop-filter: blur(15px) saturate(118%);
+}
+
+.sky-details {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(23, 59, 69, 0.24),
+      rgba(255, 255, 255, 0.065)
+    );
+}
+
+.greeting {
+  background: rgba(17, 48, 59, 0.12);
+}
+
+.countdown-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 248, 225, 0.055)
+    );
+}
+
+.time-box {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.13),
+      rgba(255, 255, 255, 0.045)
+    );
+}
+
+.info-card {
+  background: rgba(16, 46, 57, 0.15);
+}
